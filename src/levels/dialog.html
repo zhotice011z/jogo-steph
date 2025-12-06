@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="../assets/UI/base.css" />
+	<link rel="stylesheet" href="../assets/UI/scene.css" />
+</head>
+
+<body id="game">
+	<div class="scene" style="background-color: var(--blue)">
+		<div class="window dialog">
+			<div class="character"></div>
+			<div class="character"></div>
+			<div class="title-bar pink">
+				<div class="title-bar-text" id="dialog-title">PANDORA AVENTUREIRA</div>
+			</div>
+			<div class="window-body">
+				<p id="dialog-text"></p>
+				<section class="field-row button-row" style="justify-content: center">
+					<button id="dialog-1"></button>
+					<button id="dialog-2"></button>
+				</section>
+			</div>
+		</div>
+	</div>
+	<div class="flex-center" style="position: absolute; bottom: 0px; right: 10px; color: white; flex-direction: row;">
+	<p>Carregar história</p>
+	<select id="scenes" onclick="loadStory(this.value)">
+		<option value="nix1">nix1</option>
+	</select>
+	</div>
+	<script src="../js/dialog.js" defer></script>
+</body>
+
+</html>

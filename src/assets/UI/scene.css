@@ -1,0 +1,58 @@
+body#game {
+    border: 5px solid var(--gray);
+    transform: scale(var(--zoom));
+}
+
+#game {
+    background-color: var(--black);
+    width: calc(var(--game-width) / var(--zoom));
+    height: calc(var(--game-height) / var(--zoom));
+    position: relative;
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.flex-center.stretch {
+    align-items: stretch;
+}
+
+.character {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: var(--yellow);
+}
+
+/* DIALOG SCENES*/
+.window.dialog {
+    inset: auto 30px 30px 30px;
+    position: absolute;
+    min-height: 120px;
+}
+
+.button-row>button {
+    flex: 1 1 0px;
+    max-width: 50%;
+}
+
+.dialog>.character:nth-child(1) {
+    top: -100px;
+    left: 20px;
+}
+
+.dialog>.character:nth-child(2) {
+    top: -100px;
+    right: 20px;
+}

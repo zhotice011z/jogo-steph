@@ -1,0 +1,29 @@
+{
+  "start": {
+    "text": "Por favor, me ajude a encontrar a minha filha, Hemera. ela precisa voltar para casa... está de dia por muito tempo!",
+    "choices": [
+      {
+        "text": "Claro! Há alguma pista?",
+        "next": "nix_3"
+      },
+      {
+        "text": "Oxi kkkk eu não",
+        "next": "nix_2"
+      }
+    ]
+    },
+    "nix_2": {
+        "text": "Então vai cagar! vou mandar zeus te transformar num cavalo",
+        "choices": [
+          {
+            "text": "Desculpa, eu ajudo sim",
+            "next": "nix_3"
+          },
+          {
+            "text": ">:(",
+            "action": "go_to_scene",
+            "actionParam": "fim_1"
+          }
+        ]
+    }
+}

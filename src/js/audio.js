@@ -5,6 +5,8 @@ class AudioManager{
         this.audioElement = null;
         this.source = null;
         this.currentMusic = null;
+        this.musicQueue = []; // Add queue
+        this.isProcessing = false;
         this.musicFolder = 'src/assets/audio/music/';
     }
 
@@ -15,33 +17,56 @@ class AudioManager{
         this.gainNode.connect(this.audioContext.destination);
     }
 
-    async changeMusic(musicName, fadeDuration = 3000) {
-        let musicPath = this.musicFolder + musicName;
-        if (!this.audioContext) this.init();
+    async changeMusic(music, fadeDuration = 1000) {
+        // Add to queue
+        let url = this.musicFolder + music;
+        this.musicQueue.push({ url, fadeDuration });
+        
+        // Start processing if not already
+        if (!this.isProcessing) {
+            await this.processQueue();
+        }
+    }
 
+    async processQueue() {
+        if (this.musicQueue.length === 0) {
+            this.isProcessing = false;
+            return;
+        }
+        
+        this.isProcessing = true;
+        
+        // Get next item (clear queue to only play latest)
+        const nextTrack = this.musicQueue[this.musicQueue.length - 1];
+        this.musicQueue = []; // Clear all pending requests
+        
+        if (!this.audioContext) this.init();
+        
         // Fade out current music
         if (this.currentMusic) {
-            await this.fadeOut(fadeDuration / 2);
-            if (this.source) {
-                this.source.disconnect();
-            }
+            await this.fadeOut(nextTrack.fadeDuration / 2);
+            if (this.source) this.source.disconnect();
             if (this.audioElement) {
                 this.audioElement.pause();
+                this.audioElement.src = '';
             }
         }
-
-        // Load and play new music
-        this.audioElement = new Audio(musicPath);
+        
+        // Load new music
+        this.audioElement = new Audio(nextTrack.url);
         this.audioElement.loop = true;
         this.source = this.audioContext.createMediaElementSource(this.audioElement);
         this.source.connect(this.gainNode);
-
+        
         this.gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
         await this.audioElement.play();
-
-        // Fade in new music
-        await this.fadeIn(fadeDuration / 2);
-        this.currentMusic = musicPath;
+        
+        // Fade in
+        await this.fadeIn(nextTrack.fadeDuration / 2);
+        this.currentMusic = nextTrack.url;
+        
+        // Process next in queue
+        await this.processQueue();
     }
 
     fadeOut(duration) {

@@ -10,7 +10,20 @@
 </head>
 
 <body id="main-body">
-	<div class="window main">
+
+	<div id="testing" style="position: fixed; bottom: 10px; right: 10px; color: white; z-index: 1000;">
+		<button id="test">Audio</button>
+		<button id="test">Audio</button>
+
+		<select id="scenes" onclick="changeScene(this.value)">
+			<option value="error">Error</option>
+			<option value="menu" selected>menu</option>
+			<option value="dialog">dialog</option>
+		</select>
+
+	</div>
+	<button id="startGame" class="large-text">INICIAR JOGO</button>
+	<div class="window main" style="display:none">
 		<div class="title-bar">
 			<div class="title-bar-text">PANDORA AVENTUREIRA</div>
 		</div>
@@ -18,15 +31,9 @@
 			<div id="game" scene="menu"></div>
 		</div>
 		<div class="status-bar">
-			<p class="status-bar-field">Aperte <b>C</b> para abrir as configurações</p>
 			<p class="status-bar-field">Progresso da história: 10%</p>
 			<p class="status-bar-field">Finais descobertos: 1/3</p>
-			<button id="test"></button>
-			<select id="scenes" onclick="changeScene(this.value)">
-				<option value="error">Error</option>
-				<option value="menu" selected>menu</option>
-				<option value="dialog">dialog</option>
-			</select>
+			<button id="configButton">Configurações</button>
 		</div>
 	</div>
 	<script src="src/js/navigation.js" defer></script>

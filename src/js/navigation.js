@@ -1,6 +1,6 @@
 async function changeScene(sceneName) {
     try {
-        const res = await fetch(`${sceneName}.html`);
+        const res = await fetch(`src/levels/${sceneName}.html`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const htmlText = await res.text();
 
@@ -34,6 +34,8 @@ async function changeScene(sceneName) {
         console.error('Error loading scene:', err);
     }
 }
+
+export { changeScene };
 
 // // Example usage:
 // document.addEventListener('DOMContentLoaded', () => sceneChange('menu.html'));

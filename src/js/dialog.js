@@ -1,38 +1,48 @@
-function loadStory(storyName) {
-    return fetch(`../stories/${storyName}.json`)
+import { changeScene } from "./navigation.js";
+
+function loadStory() {
+    return fetch(`src/levels/story.json`)
         .then(response => response.json())
         .then(data => {
-            currentStory = data;
-            loadNode('start');
+            window.story = data;
+            console.log("Story loaded:", window.story);
         })
-        .then(() =>
-            console.log("Story updated successfully!")
-        ).catch(e => {
+        .catch(e => {
             console.log("Error parsing JSON: " + e.message);
             throw e; // rethrow so callers see the error
         });
 }
 
+
+
 const actions = {
-    go_to_scene: function (sceneName) {
-        // changeScene(sceneName);
-        window.open(`${sceneName}.html`, '_blank');
+    changeScene: ({sceneName, variation}) => {
+        changeScene(sceneName, variation)
     }
 };
-
 // Load a specific story node
 function loadNode(nodeId) {
-    const node = currentStory[nodeId];
+    if (!window.story) {
+        console.log("Error: Story not loaded yet!");
+        return;
+    }
+
+    const node = window.story[nodeId];
 
     if (!node) {
         console.log("Error: Node not found!");
         return;
     }
 
-    currentNode = nodeId;
     console.log(`Current Node: ${nodeId}`);
     document.getElementById('dialog-text').textContent = node.text;
 
+    const characterNameElem = document.getElementById('dialog-title');
+    if (node.character) {
+        characterNameElem.textContent = node.character;
+    }else {
+        characterNameElem.textContent = '???';
+    }
     const btn1 = document.getElementById('dialog-1');
     const btn2 = document.getElementById('dialog-2');
     const buttons = [btn1, btn2];
@@ -48,8 +58,14 @@ function loadNode(nodeId) {
             btn.classList.remove('hidden');
             btn.onclick = () => {
                 // Execute custom action if specified
-                if (choice.action && actions[choice.action]) {
-                    actions[choice.action](choice.actionParam);
+                if (choice.actions){
+                    choice.actions.forEach(actionObject => {                        
+                        try{
+                            actions[actionObject.action](actionObject.actionParams);
+                        } catch (e){
+                            console.log(`Error executing action ${actionObject.action}: ${e.message}`);
+                        }
+                    });
                 }
                 // Navigate to next node
                 loadNode(choice.next);
@@ -57,4 +73,11 @@ function loadNode(nodeId) {
             btn.disabled = false;
         }
     });
+}
+
+export { loadStory, loadNode };
+
+if (typeof window !== 'undefined') {
+    window.loadStory = loadStory;
+    window.loadNode = loadNode;
 }

@@ -7,12 +7,19 @@
 	<link rel="stylesheet" href="../assets/UI/98.css/style.css" />
 	<link rel="stylesheet" href="../assets/UI/base.css" />
 	<link rel="stylesheet" href="../assets/UI/scene.css" />
+	<script src="../js/audio.js"></script>
 </head>
 
 <body id="game">
-	<div class="scene flex-center" style="background-color: var(--blue)">
+	<div id="scene" class="flex-center" style="background-color: var(--blue)">
 		<h1>VOCÊ MORREU</h1>
 	</div>
+	<script>
+		if (document.getElementById('scene')) {
+			window.audioManager.changeMusic('BALENTS - Yes (I Will).mp3');
+		};
+
+	</script>
 </body>
 
 </html>

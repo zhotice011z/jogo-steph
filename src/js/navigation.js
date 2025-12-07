@@ -37,6 +37,10 @@ async function changeScene(sceneName) {
 
 export { changeScene };
 
+if (typeof window !== 'undefined') {
+    window.changeScene = changeScene;
+}
+
 // // Example usage:
 // document.addEventListener('DOMContentLoaded', () => sceneChange('menu.html'));
 // // or sceneChange('scenes/level1.html');

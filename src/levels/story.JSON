@@ -32,7 +32,7 @@
 				"actions": [
 					{ "action": "playSound", "actionParams": { "sound": "trovao.mp3" } },
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": { "sceneName": "fim", "variation": "fim1" }
 					}
 				]
@@ -45,7 +45,7 @@
 		"choices": [
 			{
 				"text": "aonde fica essa ilha?",
-				"next": "nix_ajuda_1",
+				"next": "nix_ajuda_2",
 				"actions": [
 					{
 						"action": "showItem",
@@ -67,7 +67,7 @@
 				"text": "pode deixar!",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": { "sceneName": "map", "variation": "delfos" }
 					}
 				]
@@ -168,7 +168,7 @@
 				"text": "ok! parece fácil",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": {
 							"sceneName": "delfos",
 							"variation": "apolo_chega"
@@ -191,7 +191,7 @@
 				"text": "[tocar arpa]",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": { "sceneName": "minigame_apolo", "variation": "" }
 					},
 					{ "action:": "playSound", "actionParams": { "sound": "lira.mp3" } }
@@ -207,7 +207,7 @@
 				"text": "D:",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": { "sceneName": "fim", "variation": "fim2" }
 					},
 					{ "action": "playSound", "actionParams": { "sound": "burro.mp3" } }
@@ -269,7 +269,7 @@
 				"text": "meus pêsames :(",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": {
 							"sceneName": "delfos",
 							"variation": "apolo_triste"
@@ -287,7 +287,7 @@
 				"text": "[tocar lira]",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": { "sceneName": "lira", "variation": "historia" }
 					},
 					{ "action": "playSound", "actionParams": { "sound": "lira.mp3" } }
@@ -297,7 +297,7 @@
 				"text": "[abrir mapa]",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": { "sceneName": "map", "variation": "tainaron" }
 					}
 				]
@@ -353,7 +353,7 @@
 				"text": "valeu... até mais!",
 				"actions": [
 					{
-						"action": "loadScene",
+						"action": "changeScene",
 						"actionParams": { "sceneName": "minigame_pandora", "variation": "" }
 					}
 				]

@@ -7,15 +7,16 @@
 	<link rel="stylesheet" href="../assets/UI/98.css/style.css" />
 	<link rel="stylesheet" href="../assets/UI/base.css" />
 	<link rel="stylesheet" href="../assets/UI/scene.css" />
+	<script src="../js/dialog.js" defer></script>
 </head>
 
 <body id="game">
-	<div class="scene" style="background-color: var(--blue)">
+	<div id="scene" style="background-color: var(--blue)">
 		<div class="window dialog">
 			<div class="character"></div>
 			<div class="character"></div>
 			<div class="title-bar pink">
-				<div class="title-bar-text" id="dialog-title">PANDORA AVENTUREIRA</div>
+				<div class="title-bar-text" id="dialog-title">PERSONAGEM</div>
 			</div>
 			<div class="window-body">
 				<p id="dialog-text"></p>
@@ -28,11 +29,21 @@
 	</div>
 	<div class="flex-center" style="position: absolute; bottom: 0px; right: 10px; color: white; flex-direction: row;">
 	<p>Carregar história</p>
-	<select id="scenes" onclick="loadStory(this.value)">
-		<option value="nix1">nix1</option>
+	<select id="scenesTest" onclick="loadNode(this.value)">
 	</select>
 	</div>
-	<script src="../js/dialog.js" defer></script>
+	<script>
+		if(document.getElementById('scene')) {
+			loadNode('nix_start');
+			console.log(Object.keys(window.story));
+			
+			Object.keys(window.story).forEach(node => {
+				let option = `<option value="${node}">${node}</option>`;
+				document.getElementById('scenesTest').innerHTML += option;
+			});
+		};
+
+		</script>
 </body>
 
 </html>

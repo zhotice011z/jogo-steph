@@ -17,6 +17,9 @@
 	--game-height: 500px;
 	--game-width: 900px;
 }
+.hidden {
+	display: none !important;
+}
 
 @font-face {
 	font-family: 'Pixel Operator';
@@ -71,6 +74,9 @@ button,
 
 button.large-text {
 	padding: 5px;
+}
+button {
+	user-select: none;
 }
 
 h1,

@@ -3,11 +3,22 @@ body#game {
     transform: scale(var(--zoom));
 }
 
-#game {
+#game, #sceneTransition{
     background-color: var(--black);
     width: calc(var(--game-width) / var(--zoom));
     height: calc(var(--game-height) / var(--zoom));
     position: relative;
+}
+
+#sceneTransition{
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+#sceneTransition.fade {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
 }
 
 #scene {

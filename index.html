@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="src/assets/UI/98.css/style.css" />
 	<link rel="stylesheet" href="src/assets/UI/base.css" />
 	<link rel="stylesheet" href="src/assets/UI/scene.css" />
+	<script src="src/js/debugUtils.js" type="module"></script>
 </head>
 
 <body id="main-body">
@@ -15,7 +16,7 @@
 		<button id="test">Audio</button>
 		<button id="test">Audio</button>
 
-		<select id="scenes" onclick="changeScene(this.value)">
+		<select id="scenes" onchange="changeScene(this.value)">
 			<option value="error">Error</option>
 			<option value="menu" selected>menu</option>
 			<option value="dialog">dialog</option>
@@ -28,7 +29,8 @@
 			<div class="title-bar-text">PANDORA AVENTUREIRA</div>
 		</div>
 		<div class="window-body">
-			<div id="game" scene="menu"></div>
+			<div id="sceneTransition" class="hidden"></div>
+			<div id="game" scene=""></div>
 		</div>
 		<div class="status-bar">
 			<p class="status-bar-field">Progresso da história: 10%</p>
@@ -40,6 +42,14 @@
 	<script src="src/js/audio.js" type="module"></script>
 	<script src="src/js/dialog.js" type="module"></script>
 	<script src="src/js/init.js" type="module"></script>
+	<script>
+		let levels = listfilesByType('src/levels', 'html');
+		console.log('Levels:', levels);
+		levels.forEach(level => {
+			let option = `<option value="${level.replace('src/levels/', '').replace('.html', '')}">${level.replace('src/levels/', '').replace('.html', '')}</option>`;
+			document.getElementById('scenes').innerHTML += option;
+		});
+	</script>
 </body>
 
 </html>

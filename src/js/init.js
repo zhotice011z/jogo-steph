@@ -15,6 +15,7 @@ document.getElementById('startGame').addEventListener('click', async (event) => 
     if (!window.audioManager.audioContext) {
         window.audioManager.init();
     }
+    changeScene('menu');
 }, { once: true });
 // 3. Change music
 

@@ -8,16 +8,40 @@
 	<link rel="stylesheet" href="../assets/UI/base.css" />
 	<link rel="stylesheet" href="../assets/UI/scene.css" />
 	<script src="../js/audio.js"></script>
+	<script src="../js/navigation.js"></script>
+	<script src="../js/dialog.js"></script>
 </head>
 
 <body id="game">
-	<div id="scene" class="flex-center" style="background-color: var(--blue)">
-		<h1>VOCÊ MORREU</h1>
+	<div id="scene" variation="1" class="flex-center" style="background-color: var(--blue)">
+		<h1 id="fim_title">VOCÊ MORREU</h1>
+		<button id="fim_bt" class="large-text"><b>Voltar ao menu</b></button>
 	</div>
 	<script>
 		if (document.getElementById('scene')) {
 			window.audioManager.changeMusic('BALENTS - Yes (I Will).mp3');
+			const scene = document.getElementById('scene');
+			const fim_title = document.getElementById('fim_title');
+			const fim_bt = document.getElementById('fim_bt');
+
+			switch (scene.getAttribute('variation')) {
+				case 1:
+					fim_title.innerText = "FIM 1: VOCÊ VIROU UM CAVALO!";
+					fim_bt.innerText = "TENTE NOVAMENTE";
+					fim_bt.addEventListener('click', () => changeScene('menu'));
+					break;
+				case 2:
+					fim_title.innerText = "FIM 1: VOCÊ VIROU UM CAVALO!";
+					fim_bt.innerText = "TENTE NOVAMENTE";
+					fim_bt.addEventListener('click', () => changeScene('menu'));
+					break;
+				default:
+					fim_bt.innerText = "VOLTAR AO MENU";
+					fim_bt.addEventListener('click', () => changeScene('menu'));
+					break;
+			}
 		};
+
 
 	</script>
 </body>

@@ -21,6 +21,18 @@
 	display: none !important;
 }
 
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.flex-center.stretch {
+    align-items: stretch;
+}
+
 @font-face {
 	font-family: 'Pixel Operator';
 	src: url('fonts/pixel_operator/PixelOperator.ttf') format('truetype');
@@ -136,7 +148,7 @@ body {
 	align-items: center;
 }
 
-.main.window {
+.window.main {
 	transform: scale(var(--zoom));
 }
 

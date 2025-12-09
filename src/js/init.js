@@ -9,13 +9,12 @@ window.audioManager = new AudioManager();
 document.getElementById('startGame').addEventListener('click', async (event) => {
     document.body.requestFullscreen();
     event.target.classList.add('hidden');
-    await changeScene('menu');
     loadStory();
     document.querySelector('.main').classList.remove('hidden');
     if (!window.audioManager.audioContext) {
         window.audioManager.init();
     }
-    changeScene('menu');
+    await changeScene('menu');
 }, { once: true });
 // 3. Change music
 

@@ -3,22 +3,30 @@ body#game {
     transform: scale(var(--zoom));
 }
 
-#game, #sceneTransition{
+#game,
+#sceneTransition {
     background-color: var(--black);
     width: calc(var(--game-width) / var(--zoom));
     height: calc(var(--game-height) / var(--zoom));
     position: relative;
 }
 
-#sceneTransition{
+
+
+#sceneTransition {
+    pointer-events: none;
     position: absolute;
     z-index: 1000;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 0s 1s;
 }
-#sceneTransition.fade {
+
+#sceneTransition.show {
+    cursor: progress;
     opacity: 1;
-    transition: opacity 1s ease-in-out;
+    visibility: visible;
+    transition: opacity 1s ease-in-out, visibility 0s;
 }
 
 #scene {
@@ -27,17 +35,6 @@ body#game {
     position: relative;
 }
 
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.flex-center.stretch {
-    align-items: stretch;
-}
 
 .character {
     position: absolute;

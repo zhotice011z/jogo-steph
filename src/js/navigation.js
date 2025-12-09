@@ -1,13 +1,11 @@
 async function sceneTransition(enter=true){
     const sceneTransitionDiv = document.getElementById('sceneTransition');
     if (enter){
-        sceneTransitionDiv.classList.add('fade');
-        sceneTransitionDiv.classList.remove('hidden');
+        sceneTransitionDiv.classList.add('show');
         await new Promise(resolve => setTimeout(resolve, 1000));
     } else {
-        sceneTransitionDiv.classList.remove('fade');
+        sceneTransitionDiv.classList.remove('show');
         await new Promise(resolve => setTimeout(resolve, 1000));
-        sceneTransitionDiv.classList.add('hidden');
     }
 }
 

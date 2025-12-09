@@ -15,12 +15,14 @@ class AudioManager{
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
         this.gainNode = this.audioContext.createGain();
         this.gainNode.connect(this.audioContext.destination);
+        console.log('audio context initialized');
     }
 
     async changeMusic(music, fadeDuration = 1000) {
         // Add to queue
         let url = this.musicFolder + music;
         this.musicQueue.push({ url, fadeDuration });
+        console.log(`Music '${music}' added to queue`)
         
         // Start processing if not already
         if (!this.isProcessing) {
@@ -44,6 +46,7 @@ class AudioManager{
         
         // Fade out current music
         if (this.currentMusic) {
+            console.log(`Fading out current music: ${this.currentMusic}`);
             await this.fadeOut(nextTrack.fadeDuration / 2);
             if (this.source) this.source.disconnect();
             if (this.audioElement) {
@@ -62,6 +65,7 @@ class AudioManager{
         await this.audioElement.play();
         
         // Fade in
+        console.log(`Fading in new music: ${nextTrack.url}`);
         await this.fadeIn(nextTrack.fadeDuration / 2);
         this.currentMusic = nextTrack.url;
         

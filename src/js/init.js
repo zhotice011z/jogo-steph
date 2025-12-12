@@ -1,6 +1,6 @@
-import { AudioManager } from './audio.js';
-import { loadStory } from './dialog.js';
-import {changeScene} from './navigation.js';
+import { AudioManager } from '/src/js//audio.js';
+import { loadStory } from '/src/js//dialog.js';
+import {changeScene} from '/src/js//navigation.js';
 
 // 1. Create the manager
 window.audioManager = new AudioManager();
@@ -17,7 +17,3 @@ document.getElementById('startGame').addEventListener('click', async (event) => 
     await changeScene('menu');
 }, { once: true });
 // 3. Change music
-
-document.getElementById('test').addEventListener('click', async () => {
-    window.audioManager.changeMusic('Regona - B__ Start Up.mp3');
-});

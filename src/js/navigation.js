@@ -11,7 +11,7 @@ async function sceneTransition(enter=true){
 
 async function changeScene(sceneName, variation = null) {
     try {
-        const res = await fetch(`src/levels/${sceneName}.html`);
+        const res = await fetch(`/src/levels/${sceneName}.html`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const htmlText = await res.text();
 
@@ -32,6 +32,8 @@ async function changeScene(sceneName, variation = null) {
         const nodes = Array.from(doc.body.childNodes);
         nodes.forEach(node => game.appendChild(document.importNode(node, true)));
 
+        document.getElementById('scene').setAttribute('variation', variation);
+
         // Re-insert scripts so they execute (handles inline and external scripts)
         const scripts = Array.from(game.querySelectorAll('script'));
         scripts.forEach(oldScript => {
@@ -41,7 +43,8 @@ async function changeScene(sceneName, variation = null) {
             oldScript.parentNode.replaceChild(newScript, oldScript);
         });
 
-        document.getElementById('scenes').setAttribute('scene', sceneName);
+        game.setAttribute('scene', sceneName);
+        
         await sceneTransition(false);
 
     } catch (err) {

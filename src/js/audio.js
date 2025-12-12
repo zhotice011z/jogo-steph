@@ -7,7 +7,6 @@ class AudioManager{
         this.currentMusic = null;
         this.musicQueue = []; // Add queue
         this.isProcessing = false;
-        this.musicFolder = 'src/assets/audio/music/';
     }
 
     init() {
@@ -20,7 +19,7 @@ class AudioManager{
 
     async changeMusic(music, fadeDuration = 1000) {
         // Add to queue
-        let url = this.musicFolder + music;
+        let url = '/src/assets/audio/music/' + music;
         this.musicQueue.push({ url, fadeDuration });
         console.log(`Music '${music}' added to queue`)
         

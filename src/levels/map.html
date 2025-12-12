@@ -4,22 +4,43 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="../assets/UI/98.css/style.css" />
-	<link rel="stylesheet" href="../assets/UI/base.css" />
-	<link rel="stylesheet" href="../assets/UI/scene.css" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+	<link rel="stylesheet" href="/src/assets/UI/scene.css" />
+	<script src="/src/js/navigation.js" type="module"></script>
+	<script src="/src/js/audio.js" type="module"></script>
 </head>
 
 <body id="game">
-	<div div id="scene" class="flex-center" style="background-color: var(--blue)">
-		<div class="flex-center">
-			<h1>PANDORA AVENTUREIRA</h1>
-			<div class="flex-center stretch">
-				<button class="large-text"><b>Iniciar Jogo</b></button>
-				<button class="large-text" disabled><b>?????</b></button>
-				<button class="large-text"><b>Configurações</b></button>
+	<div id="scene" variation="delfos" class="flex-center" style="background-color: var(--blue)">
+		<div class="window">
+			<div id="map" class="back">
+				<div class="water"></div>
+				<div class="overlay"></div>
+				<button id="map_delfos" onclick="changeScene('minigame_hemera')"><b>Delfos</b></button>
+				<button id="map_tainaron" onclick="changeScene('tainaron')"><b>Tainaron</b></button>
 			</div>
 		</div>
 	</div>
+	<link rel="stylesheet" href="/src/assets/UI/levelsCSS/map.css" />
+	<script async type="module">
+		try {
+			const scene = document.getElementById('scene');
+			const variation = scene.getAttribute('variation');
+			if (variation == 'delfos') {
+				document.getElementById('map_delfos').disabled = false;
+				document.getElementById('map_tainaron').disabled = true;
+			}
+			if (variation == 'tainaron') {
+				document.getElementById('map_delfos').disabled = true;
+				document.getElementById('map_tainaron').disabled = false;
+			}
+
+		} catch (err) {
+			console.log('Error loading scene:', err);
+		}
+	</script>
+
 </body>
 
 </html>

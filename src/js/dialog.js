@@ -1,7 +1,7 @@
-import { changeScene } from "./navigation.js";
+import { changeScene } from "/src/js/navigation.js";
 
 function loadStory() {
-    return fetch(`src/levels/story.json`)
+    return fetch(`/src/levels/story.json`)
         .then(response => response.json())
         .then(data => {
             window.story = data;

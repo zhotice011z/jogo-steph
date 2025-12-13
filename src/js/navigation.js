@@ -45,16 +45,18 @@ async function changeScene(sceneName, variation = null) {
 
         game.setAttribute('scene', sceneName);
         
-        await sceneTransition(false);
+        // await sceneTransition(false); --- feito no script de cada cena
 
     } catch (err) {
         console.error('Error loading scene:', err);
     }
 }
 
+export { sceneTransition };
 export { changeScene };
 
 if (typeof window !== 'undefined') {
+    window.sceneTransition = sceneTransition;
     window.changeScene = changeScene;
 }
 

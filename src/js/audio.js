@@ -38,8 +38,14 @@ class AudioManager{
         this.isProcessing = true;
         
         // Get next item (clear queue to only play latest)
-        const nextTrack = this.musicQueue[this.musicQueue.length - 1];
+        const nextTrack = this.musicQueue[this.musicQueue.length - 1];        
         this.musicQueue = []; // Clear all pending requests
+        
+        if (this.currentMusic == nextTrack.url){
+            console.log(`${this.currentMusic} already playing`);
+            this.isProcessing = false;
+            return
+        }
         
         if (!this.audioContext) this.init();
         

@@ -62,7 +62,7 @@
 }
 
 * {
-	cursor: url('cursors/pointer.png'), auto !important;
+	cursor: url('/src/assets/UI/cursors/pointer.png'), auto !important;
 	font-family: 'Pixel Operator Mono', sans-serif !important;
 }
 

@@ -33,6 +33,8 @@ body#game {
     width: 100%;
     height: 100%;
     position: relative;
+    background-image: none;
+    background-size: cover;
 }
 
 
@@ -40,7 +42,8 @@ body#game {
     position: absolute;
     width: 100px;
     height: 100px;
-    background-color: var(--yellow);
+    background-image: none;
+    background-size: cover;
 }
 
 /* DIALOG SCENES*/

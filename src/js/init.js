@@ -10,6 +10,7 @@ document.getElementById('startGame').addEventListener('click', async (event) => 
     document.body.requestFullscreen();
     event.target.classList.add('hidden');
     loadStory();
+    loadDialogConfig();
     document.querySelector('.main').classList.remove('hidden');
     if (!window.audioManager.audioContext) {
         window.audioManager.init();

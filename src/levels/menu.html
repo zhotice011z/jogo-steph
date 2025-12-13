@@ -16,16 +16,20 @@
 		<div class="flex-center">
 			<h1>PANDORA AVENTUREIRA</h1>
 			<div class="flex-center stretch">
-				<button class="large-text" onclick="changeScene('dialog')"><b>Iniciar</b></button>
+				<button class="large-text" onclick="changeScene('dialog', 'nix_start')"><b>Iniciar</b></button>
 				<button class="large-text" disabled><b>?????</b></button>
 			</div>
 		</div>
 	</div>
-	<script>
-		if (document.getElementById('scene')) {
+	<script async>
+		try{
+			const scene = document.getElementById('scene');
 			window.audioManager.changeMusic('Tupperwave - Timeless.mp3', 6000);
-		};
-
+		} catch(err) {
+			console.log('Error loading scene', err);
+		} finally {
+			sceneTransition(false)
+		}
 	</script>
 </body>
 

@@ -4,14 +4,14 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="../assets/UI/98.css/style.css" />
-	<link rel="stylesheet" href="../assets/UI/base.css" />
-	<link rel="stylesheet" href="../assets/UI/scene.css" />
-	<script src="../js/dialog.js" defer></script>
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+	<link rel="stylesheet" href="/src/assets/UI/scene.css" />
+	<script src="/src/js/dialog.js" defer></script>
 </head>
 
 <body id="game">
-	<div id="scene" variation="" style="background-color: var(--blue)">
+	<div id="scene" variation="">
 		<div class="window dialog">
 			<div class="character"></div>
 			<div class="character"></div>
@@ -21,8 +21,8 @@
 			<div class="window-body">
 				<p id="dialog-text"></p>
 				<section class="field-row button-row" style="justify-content: center">
-					<button id="dialog-1"></button>
-					<button id="dialog-2"></button>
+					<button id="dialog1"></button>
+					<button id="dialog2"></button>
 				</section>
 			</div>
 		</div>
@@ -32,17 +32,21 @@
 		<select id="scenesTest" onclick="loadNode(this.value)">
 		</select>
 	</div>
-	<script>
-		if (document.getElementById('scene')) {
-			loadNode('nix_start');
+	<script async>
+		try {
+			const scene = document.getElementById('scene');
 			console.log(Object.keys(window.story));
-
 			Object.keys(window.story).forEach(node => {
 				let option = `<option value="${node}">${node}</option>`;
 				document.getElementById('scenesTest').innerHTML += option;
 			});
-		};
 
+			await changeDialogScene(scene.getAttribute('variation'));
+		} catch (err) {
+			console.log();
+		} finally {
+			sceneTransition(false);
+		}
 	</script>
 </body>
 

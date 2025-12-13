@@ -1,0 +1,14 @@
+{
+	"nix_start":{
+		"character1":"nix_normal.png",
+		"character2":"",
+		"music":"18 Carat Affair - Jon Benet.mp3",
+		"background":"delfos/1.png"
+	},
+	"hemera_1":{
+		"character1":"hemera_maldosa.png",
+		"character2":"",
+		"music":"Surfing - Hit the Spot.mp3",
+		"background":"delfos/4.png"
+	}
+}

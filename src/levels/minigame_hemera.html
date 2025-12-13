@@ -7,19 +7,20 @@
 	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
 	<link rel="stylesheet" href="/src/assets/UI/base.css" />
 	<link rel="stylesheet" href="/src/assets/UI/scene.css" />
+	<script src="/src/js/navigation.js" type="module"></script>
 </head>
 
 <body id="game">
 	<div id="scene" class="flex-center" style="background-color: var(--blue); position: relative;">
 		<div id="MGHback"></div>
-		<div id="MGHbox" onclick="changeStep()"></div>
+		<div id="MGHbox"></div>
 	</div>
 	<style>
 		#MGHback {
 			width: 100%;
 			height: 100%;
 			background-size: cover;
-			cursor: url("/src/assets/UI/cursors/cross.png"), crosshair;
+			cursor: url("/src/assets/UI/cursors/cross.png") 8 10, crosshair !important;
 			position: absolute;
 		}
 		#MGHbox {
@@ -31,7 +32,8 @@
 		}
 	</style>
 	<script async>
-		if (document.getElementById('scene')) {
+		try{
+			document.getElementById('scene');
 			let step = 0;
 			const back = document.getElementById('MGHback');
 			const box = document.getElementById('MGHbox');
@@ -42,19 +44,26 @@
 				{top:160, left:160, width:60, height:60},
 				{top:0, left:30, width:60, height:60},
 			]
-			function changeStep(){
+			async function changeStep(){
 				if (step==4) {
 					box.classList.add('hidden');
-					window.changeScene('menu');
+					window.changeScene('dialog', 'hemera_1');
 					return
 				}
 				step += 1;
 				console.log(`Step: ${step}`);
-				back.style.backgroundImage = `url('/src/assets/image/delfos/${step}.png')`;
+				await window.sceneTransition(true);
+				back.style.backgroundImage = `url('/src/assets/image/background/delfos/${step}.png')`;
 				box.style = `top: ${boxPos[step].top}px; left: ${boxPos[step].left}px; width: ${boxPos[step].width}px; height: ${boxPos[step].height}px; `;
+				await window.sceneTransition(false);
 			}
+			box.addEventListener('click', async ()=>{await changeStep()});
 			changeStep();
-		};
+		} catch(err) {
+			console.log();
+		} finally {
+			sceneTransition(false)
+		}
 	</script>
 </body>
 

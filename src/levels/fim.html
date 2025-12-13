@@ -18,7 +18,8 @@
 		<button id="fim_bt" class="large-text"><b>Voltar ao menu</b></button>
 	</div>
 	<script>
-		if (document.getElementById('scene')) {
+		try {
+			document.getElementById('scene');
 			window.audioManager.changeMusic('BALENTS - Yes (I Will).mp3');
 			const scene = document.getElementById('scene');
 			const fim_title = document.getElementById('fim_title');
@@ -40,9 +41,11 @@
 					fim_bt.addEventListener('click', () => changeScene('menu'));
 					break;
 			}
-		};
-
-
+		} catch (err) {
+			console.log();
+		} finally {
+			sceneTransition(false);
+		}
 	</script>
 </body>
 

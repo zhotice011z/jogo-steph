@@ -13,8 +13,11 @@
 	<div id="scene" class="flex-center" style="background-color: var(--blue)">
 	</div>
 	<script>
-		if (document.getElementById('scene')) {
-		};
+		try{
+			const scene = document.getElementById('scene');
+		} catch(err) {
+			console.log('Error loading the scene:', err);
+		}
 	</script>
 </body>
 

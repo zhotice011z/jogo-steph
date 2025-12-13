@@ -10,8 +10,13 @@
 					{
 						"action": "changeCharacter",
 						"actionParams": {
-							"position": 0,
-							"image": "nix_brava",
+							"character": 0,
+							"image": "nix_brava.png"
+						}
+					},
+					{
+						"action": "playSound",
+						"actionParams":{
 							"sound": "bravo.mp3"
 						}
 					}
@@ -85,9 +90,14 @@
 					{
 						"action": "changeCharacter",
 						"actionParams": {
-							"position": 0,
-							"image": "hemera_brava.png",
-							"sound": "bravo.mp3"
+							"character": 0,
+							"image": "hemera_brava.png"
+						}
+					},
+					{
+						"action":"playSound",
+						"actionParams":{
+							"sound":"bravo.mp3"
 						}
 					}
 				]
@@ -106,9 +116,8 @@
 					{
 						"action": "changeCharacter",
 						"actionParams": {
-							"position": 0,
-							"image": "hemera_normal",
-							"sound": ""
+							"character": 0,
+							"image": "hemera_normal.png"
 						}
 					}
 				]
@@ -146,9 +155,8 @@
 					{
 						"action": "changeCharacter",
 						"actionParams:": {
-							"position": 0,
-							"image": "hemera_maldosa.png",
-							"sound": ""
+							"character": 0,
+							"image": "hemera_maldosa.png"
 						}
 					}
 				]
@@ -231,10 +239,15 @@
 					{
 						"action": "changeCharacter",
 						"actionParams": {
-							"position": 1,
+							"character": 1,
 							"image": "dafne_arvore.png",
-							"sound": "dafne_arvore.mp3",
 							"animation": "fade"
+						}
+					},
+					{
+						"action":"playSound",
+						"actionParams":{
+							"sound":"dafne_arvore.mp3"
 						}
 					}
 				]
@@ -252,9 +265,14 @@
 					{
 						"action": "changeCharacter",
 						"actionParams": {
-							"position": 0,
-							"image": "apolo_triste.png",
-							"sound": "triste.mp3"
+							"character": 0,
+							"image": "apolo_triste.png"
+						}
+					},
+					{
+						"action":"playSound",
+						"actionParams":{
+							"sound":"triste.mp3"
 						}
 					}
 				]
@@ -315,10 +333,15 @@
 					{
 						"action": "changeCharacter",
 						"actionParams": {
-							"position": 1,
+							"character": 1,
 							"image": "hemera_brava.png",
-							"sound": "bravo.mp3",
 							"animation": ""
+						}
+					},
+					{
+						"action":"playSound",
+						"actionParams":{
+							"sound":"bravo.mp3"
 						}
 					}
 				]
@@ -336,10 +359,15 @@
 					{
 						"action": "changeCharacter",
 						"actionParams": {
-							"position": 1,
+							"character": 1,
 							"image": "nada.png",
-							"sound": "caminhando.mp3",
 							"animation": "fade"
+						}
+					},
+					{
+						"action":"playSound",
+						"actionParams":{
+							"sound":"caminhando.mp3"
 						}
 					}
 				]

@@ -1,7 +1,7 @@
 import { changeScene } from "/src/js/navigation.js";
 
 function loadStory() {
-    return fetch(`/src/levels/story.json`)
+    return fetch(`/src/scenes/story.json`)
         .then(response => response.json())
         .then(data => {
             window.story = data;
@@ -13,7 +13,7 @@ function loadStory() {
         });
 }
 function loadDialogConfig() {
-    return fetch(`/src/levels/dialogConfig.json`)
+    return fetch(`/src/scenes/dialogConfig.json`)
         .then(response => response.json())
         .then(data => {
             window.dialogConfig = data;

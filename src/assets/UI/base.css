@@ -16,21 +16,12 @@
 	--zoom: 1.5;
 	--game-height: 500px;
 	--game-width: 900px;
-}
-.hidden {
-	display: none !important;
-}
+	--cursor-pointer: url('/src/assets/image/cursors/pointer.png') 10 0, pointer !important;
+	--cursor-crosshair: url("/src/assets/image/cursors/crosshair.png") 17 17, crosshair !important;
+	--cursor-default: url("/src/assets/image/cursors/default.png") 2 0, default !important;
+	--cursor-not-allowed: url("/src/assets/image/cursors/not-allowed.png") 17 5, not-allowed !important;
+	--cursor-not-wait: url("/src/assets/image/cursors/wait.png") 17 5, wait !important;
 
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.flex-center.stretch {
-    align-items: stretch;
 }
 
 @font-face {
@@ -62,8 +53,9 @@
 }
 
 * {
-	cursor: url('/src/assets/UI/cursors/pointer.png'), auto !important;
+	cursor: var(--cursor-default);
 	font-family: 'Pixel Operator Mono', sans-serif !important;
+	user-select: none;
 }
 
 
@@ -86,9 +78,6 @@ button,
 
 button.large-text {
 	padding: 5px;
-}
-button {
-	user-select: none;
 }
 
 h1,
@@ -116,7 +105,7 @@ h2 {
 	58% {
 		transform: translate(0, -10px) scale(1.03);
 	}
-
+	
 	100% {
 		transform: translate(0, 0);
 	}
@@ -141,11 +130,65 @@ body {
 	/* overflow: hidden; */
 	padding: 10px;
 	margin: 0;
-
+	
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+body#game {
+	border: 5px solid var(--gray);
+	transform: scale(var(--zoom));
+}
+
+#game,
+#sceneTransition {
+	background-color: var(--black);
+	width: calc(var(--game-width) / var(--zoom));
+	height: calc(var(--game-height) / var(--zoom));
+	position: relative;
+	overflow: hidden;
+}
+
+#sceneTransition {
+	pointer-events: visible;
+	position: absolute;
+	z-index: 1000;
+	opacity: 0;
+	visibility: hidden;
+	cursor: var(--cursor-not-wait);
+	transition: opacity 1s ease-in-out, visibility 0s 1s;
+}
+
+#sceneTransition.show {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 1s ease-in-out, visibility 0s;
+}
+
+#scene {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-image: none;
+	background-size: cover;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.flex-center.stretch {
+	align-items: stretch;
 }
 
 .window.main {
@@ -166,6 +209,16 @@ body {
 }
 .status-bar {
 	margin: var(--element-spacing);
+}
+
+button {
+	cursor: var(--cursor-pointer);
+}
+button>*{
+	cursor: inherit;
+}
+button:disabled{
+	cursor: var(--cursor-not-allowed);
 }
 
 

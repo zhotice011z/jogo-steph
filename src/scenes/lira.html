@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+</head>
+
+<body id="game">
+	<div id="scene" style="background-color: var(--blue)">
+		<div class="window" id="lira">
+			<div class="title-bar pink">
+				<div class="title-bar-text" id="dialog-title">Lira afinadinha</div>
+			</div>
+			<div class="window-body">
+				<div class="overlay"></div>
+			</div>
+		</div>
+		<div class="window" id="teclado">
+			<div class="title-bar pink">
+				<div class="title-bar-text" id="dialog-title">Controles</div>
+			</div>
+			<div class="window-body">
+				<button class="note" key="Q" note="5C">
+					<p>Q</p>DO
+				</button>
+				<button class="note" key="W" note="5D">
+					<p>W</p>RE
+				</button>
+				<button class="note" key="E" note="5E">
+					<p>E</p>MI
+				</button>
+				<button class="note" key="R" note="5F">
+					<p>R</p>FA
+				</button>
+				<button class="note" key="T" note="5G">
+					<p>T</p>SOL
+				</button>
+				<button class="note" key="Y" note="6A">
+					<p>Y</p>LA
+				</button>
+				<button class="note" key="U" note="6B">
+					<p>U</p>SI
+				</button>
+				<button class="note" key="A" note="4C">
+					<p>A</p>DO
+				</button>
+				<button class="note" key="S" note="4D">
+					<p>S</p>RE
+				</button>
+				<button class="note" key="D" note="4E">
+					<p>D</p>MI
+				</button>
+				<button class="note" key="F" note="4F">
+					<p>F</p>FA
+				</button>
+				<button class="note" key="G" note="4G">
+					<p>G</p>SOL
+				</button>
+				<button class="note" key="H" note="5A">
+					<p>H</p>LA
+				</button>
+				<button class="note" key="J" note="5B">
+					<p>J</p>SI
+				</button>
+				<button class="note" key="V" note="3F">
+					<p>V</p>FA
+				</button>
+				<button class="note" key="B" note="3G">
+					<p>B</p>SOL
+				</button>
+				<button class="note" key="N" note="4A">
+					<p>N</p>LA
+				</button>
+				<button class="note" key="M" note="4B">
+					<p>M</p>SI
+				</button>
+			</div>
+		</div>
+		<button class="large-text" id="voltar">VOLTAR</button>
+	</div>
+	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/lira.css" />
+	<script async type="module">
+		try {
+			const scene = document.getElementById('scene');
+			const variation = scene.getAttribute('variation');
+
+			const noteButtons = document.querySelectorAll('.note');
+			noteButtons.forEach(bttn => {
+				bttn.addEventListener('click', () => {
+					window.audioManager.playSound(`lira/${bttn.getAttribute('note')}.mp3`);
+				});
+			});
+			function noteKeydown(e) {
+				let note = document.querySelector(`button.note[key='${e.key.toUpperCase()}']`);
+				if (note) { note.click(); }
+			}
+			window.addEventListener('keydown', noteKeydown);
+			
+			await window.audioManager.fadeOut(2000);
+
+			await sceneTransition(false);
+
+			document.getElementById('voltar').addEventListener('click', async()=>{
+				window.removeEventListener('keydown', noteKeydown);
+				if (variation=='from_story'){
+					await changeScene('dialog', 'hemera_8');
+				} else if (variation == 'from_menu') {
+					await changeScene('menu');
+				}
+				await window.audioManager.fadeIn(2000);
+			})
+		} catch (err) {
+			console.log('Error loading the scene:', err);
+		} finally {
+			sceneTransition(false);
+		}
+	</script>
+</body>
+
+</html>

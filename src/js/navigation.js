@@ -11,7 +11,7 @@ async function sceneTransition(enter=true){
 
 async function changeScene(sceneName, variation = null) {
     try {
-        const res = await fetch(`/src/levels/${sceneName}.html`);
+        const res = await fetch(`/src/scenes/${sceneName}.html`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const htmlText = await res.text();
 

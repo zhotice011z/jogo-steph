@@ -1,0 +1,72 @@
+#scene {
+    background-image: url('/src/assets/image/background/delfos4.png');
+}
+#scene[frame='1'] {
+    cursor: var(--cursor-crosshair);
+}
+
+.character {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: none;
+    background-size: cover;
+    transition: background 1s linear, top 2s linear, left 2s linear, transform 0.5s linear;
+}
+
+#hemera {
+    width: 40px;
+    height: 40px;
+    background-image: url('/src/assets/image/characters/hemera_normal.png');
+    top: 250px;
+    left: 70px;
+}
+#scene[frame='1']>#hemera {
+    cursor: var(--cursor-pointer);
+}
+
+#apolo {
+    background-image: url('/src/assets/image/characters/apolo_normal.png');
+}
+
+#dafne {
+    background-image: url('/src/assets/image/characters/dafne_normal.png');
+}
+
+#dafne.arvore {
+    background-image: url('/src/assets/image/characters/dafne_arvore.png');
+}
+
+
+#scene[frame='1']>#dafne {
+    top: 140px;
+    left: 670px;
+}
+#scene[frame='1']>#apolo {
+    top: 140px;
+    left: 600px;
+    transform: scaleX(-1);
+}
+
+
+#scene[frame='2']>#dafne {
+    top: 140px;
+    left: 370px;
+}
+#scene[frame='2']>#apolo {
+    top: 140px;
+    left: 200px;
+    transform: scaleX(-1);
+}
+
+#scene[frame='3']>#dafne {
+    top: 140px;
+    left: 370px;
+}
+#scene[frame='3']>#apolo {
+    top: 140px;
+    left: 200px;
+    transform: scaleX(1);
+}
+
+

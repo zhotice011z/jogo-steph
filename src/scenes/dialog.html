@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+	<script src="/src/js/dialog.js" defer></script>
+</head>
+
+<body id="game">
+	<div id="scene" variation="">
+		<div class="character"></div>
+		<div class="character"></div>
+		<div class="window dialog">
+			<div class="title-bar pink">
+				<div class="title-bar-text" id="dialog-title">PERSONAGEM</div>
+			</div>
+			<div class="window-body">
+				<p id="dialog-text"></p>
+				<section class="field-row button-row" style="justify-content: center">
+					<button id="dialog1"></button>
+					<button id="dialog2"></button>
+				</section>
+			</div>
+		</div>
+	</div>
+	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/dialog.css" />
+	<script async type="module">
+		try {
+			const scene = document.getElementById('scene');
+			await changeDialogScene(scene.getAttribute('variation'));
+		} catch (err) {
+			console.log();
+		} finally {
+			await sceneTransition(false);
+		}
+	</script>
+</body>
+
+</html>

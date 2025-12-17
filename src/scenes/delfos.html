@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+</head>
+
+<body id="game">
+	<div id="scene" variation="" frame="1">
+		<div id="hemera" class="character"></div>
+		<div id="apolo" class="character"></div>
+		<div id="dafne" class="character"></div>
+	</div>
+	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/delfos.css" />
+	<script async type="module">
+		try {
+			const scene = document.getElementById('scene');
+			const variation = scene.getAttribute('variation');
+			const apolo = document.getElementById('apolo');
+			const dafne = document.getElementById('dafne');
+			const hemera = document.getElementById('hemera');
+
+			if (variation == 'hemera_1') {
+				scene.setAttribute('frame', 1);
+				hemera.addEventListener('click', async () => await window.changeScene('dialog', 'hemera_1'))
+				await sceneTransition(false);
+			}
+
+			if (variation == 'apolo_chega') {
+				scene.setAttribute('frame', 1);
+				await sceneTransition(false);
+				await new Promise(resolve => setTimeout(resolve, 1000));
+				scene.setAttribute('frame', 2);
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				scene.setAttribute('frame', 3);
+				await new Promise(resolve => setTimeout(resolve, 2000));
+				window.changeScene('dialog', 'apolo_1')
+			}
+		} catch (err) {
+			console.log('Error loading the scene:', err);
+		} finally {
+			await sceneTransition(false);
+		}
+	</script>
+</body>
+
+</html>

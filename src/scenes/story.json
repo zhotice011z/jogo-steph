@@ -1,0 +1,403 @@
+{
+	"nix_start": {
+		"character": "nix",
+		"text": "Por favor, me ajude a encontrar a minha filha, Hemera. ela precisa voltar para casa... está de dia por muito tempo!",
+		"choices": [
+			{
+				"text": "Oxi kkkk eu não",
+				"next": "nix_fim_1",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 0,
+							"image": "nix_brava.png"
+						}
+					},
+					{
+						"action": "playSound",
+						"actionParams": {
+							"sound": "bravo.mp3"
+						}
+					}
+				]
+			},
+			{
+				"text": "Claro! Aonde posso começar a procurar?",
+				"next": "nix_ajuda_1"
+			}
+		]
+	},
+	"nix_fim_1": {
+		"character": "nix",
+		"text": "então vai cagar! vou mandar zeus te transformar num cavalo",
+		"choices": [
+			{
+				"text": "D:",
+				"actions": [
+					{ "action": "playSound", "actionParams": { "sound": "trovao.mp3" } },
+					{
+						"action": "changeScene",
+						"actionParams": { "sceneName": "fim", "variation": "fim1" }
+					}
+				]
+			}
+		]
+	},
+	"nix_ajuda_1": {
+		"character": "nix",
+		"text": "que ótimo! ela me disse que ia para a cidade de Delfos visitar um \"amigo\", mas não me deu muitos detalhes. talvez ainda esteja por lá.",
+		"choices": [
+			{
+				"text": "aonde fica essa ilha?",
+				"next": "nix_ajuda_2",
+				"actions": [
+					{
+						"action": "showItem",
+						"actionParams": {
+							"title": "Mapa da grécia",
+							"image": "item_mapa.png",
+							"sound": "item_pega.mp3"
+						}
+					}
+				]
+			}
+		]
+	},
+	"nix_ajuda_2": {
+		"character": "nix",
+		"text": "é o centro do mundo, você deveria saber disso... Enfim, pegue esse mapa. e volte logo com minha filha!!!",
+		"choices": [
+			{
+				"text": "pode deixar!",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": { "sceneName": "map", "variation": "delfos" }
+					}
+				]
+			}
+		]
+	},
+	"hemera_1": {
+		"character": "hemera",
+		"text": "aaah!!! que susto! pra que ficar se espreitando ai, é algum stalker??? quem é você???",
+		"choices": [
+			{
+				"text": "não interessa!",
+				"next": "hemera_2",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 0,
+							"image": "hemera_brava.png"
+						}
+					},
+					{
+						"action": "playSound",
+						"actionParams": {
+							"sound": "bravo.mp3"
+						}
+					}
+				]
+			},
+			{
+				"text": "sou pandora",
+				"next": "hemera_3",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 0,
+							"image": "hemera_normal.png"
+						}
+					}
+				]
+			}
+		]
+	},
+	"hemera_2": {
+		"character": "hemera",
+		"text": "Eu ein, que menina grossa... O que você quer aqui?",
+		"choices": [
+			{
+				"text": "Sua mãe pediu pra você voltar para casa",
+				"next": "hemera_4",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 0,
+							"image": "hemera_normal.png"
+						}
+					}
+				]
+			}
+		]
+	},
+	"hemera_3": {
+		"character": "hemera",
+		"text": "Hm... continuo não sabendo quem é você, deve ser nova por aqui. O que você quer?",
+		"choices": [
+			{ "text": "Sua mãe pediu pra você voltar para casa", "next": "hemera_4" }
+		]
+	},
+	"hemera_4": {
+		"character": "hemera",
+		"text": "Mas eu vou voltar, só preciso terminar uma coisinha antes...",
+		"choices": [{ "text": "e o que seria?", "next": "hemera_5" }]
+	},
+	"hemera_5": {
+		"character": "hemera",
+		"text": "fiquei sabendo que um tal de \"apolo\" tá recebendo todo o crédito pela luz do dia. alguém precisa botar esse garoto no lugar dele. vou pregar uma peça nesse pirralho >:)",
+		"choices": [
+			{
+				"text": "como posso te ajudar nisso?",
+				"next": "hemera_6",
+				"actions": [
+					{
+						"action": "showItem",
+						"actionParams": {
+							"title": "Lira afinadinha",
+							"image": "item_lira.png",
+							"sound": "lira.mp3"
+						}
+					},
+					{
+						"action": "changeCharacter",
+						"actionParams:": {
+							"character": 0,
+							"image": "hemera_maldosa.png"
+						}
+					}
+				]
+			}
+		]
+	},
+	"hemera_6": {
+		"character": "hemera",
+		"text": "recebi uma fofoca quentíssima de que ele está apaixonado por uma tal \"dafne\" e vai fazer uma serenata pra ela hoje. preciso que você vá lá \"ajudar\" ele... leve essa lira",
+		"choices": [{ "text": "o que eu faço com ela?", "next": "hemera_7" }]
+	},
+	"hemera_7": {
+		"character": "hemera",
+		"text": "diga que você vai acompanhar tocando a lira... siga a melodia dele para tentar \"encantar\" a bela dafne. Vou me esconder, ele deve chegar logo...",
+		"choices": [
+			{
+				"text": "ok! parece fácil",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": {
+							"sceneName": "delfos",
+							"variation": "apolo_chega"
+						}
+					}
+				]
+			}
+		]
+	},
+	"apolo_1": {
+		"character": "apolo",
+		"text": "oooh querida dafne, obrigado por vir a este tão belo lugar, mas não tão belo quanto o seu olhar... eu compus uma canção para declarar meus sentimentos por ti... ei, pandora, cola aqui",
+		"choices": [{ "text": "é pra já!", "next": "apolo_2" }]
+	},
+	"apolo_2": {
+		"character": "apolo",
+		"text": "que coincidência você estar com uma lira jusatemente aqui e agora. acompanhe minha doce voz e não erre uma única nota, ou sofrerá as consequências. Vamos lá, 1... 2... 3...",
+		"choices": [
+			{
+				"text": "[tocar arpa]",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": { "sceneName": "minigame_apolo", "variation": "" }
+					},
+					{ "action:": "playSound", "actionParams": { "sound": "lira.mp3" } }
+				]
+			}
+		]
+	},
+	"apolo_fim": {
+		"character": "apolo",
+		"text": "nossa... isso foi péssimo! tome aqui um novo par de orelhas, quem sabe assim você ouve as atrocidades que está tocando!!!",
+		"choices": [
+			{
+				"text": "D:",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": { "sceneName": "fim", "variation": "fim2" }
+					},
+					{ "action": "playSound", "actionParams": { "sound": "burro.mp3" } }
+				]
+			}
+		]
+	},
+	"apolo_3": {
+		"character": "apolo",
+		"text": "E então, minha bela amada, o que achou? qual nota daria para mim?",
+		"choices": [{ "text": "...", "next": "dafne_1" }]
+	},
+	"dafne_1": {
+		"character": "dafne",
+		"text": "nota... de repúdio. eu já falei para desencanar de mim, carente! oooh deuses, eu suplico, me transformem algo que esse rapaz nunca possa amar!!!",
+		"choices": [
+			{
+				"text": "...",
+				"next": "apolo_4",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 1,
+							"image": "dafne_arvore.png",
+							"animation": "fade"
+						}
+					},
+					{
+						"action": "playSound",
+						"actionParams": {
+							"sound": "dafne_arvore.mp3"
+						}
+					}
+				]
+			}
+		]
+	},
+	"apolo_4": {
+		"character": "apolo",
+		"text": "???",
+		"choices": [
+			{
+				"text": "?...",
+				"next": "apolo_5",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 0,
+							"image": "apolo_triste.png"
+						}
+					},
+					{
+						"action": "playSound",
+						"actionParams": {
+							"sound": "triste.mp3"
+						}
+					}
+				]
+			}
+		]
+	},
+	"apolo_6": {
+		"character": "apolo",
+		"text": "eu sou tão ruim assim? hm, não é todo mundo que sabe apreciar arte hoje em dia... enfim, agradeço por tentar me ajudar. eu vou... chorar aqui no cantinho por um tempo...",
+		"choices": [
+			{
+				"text": "meus pêsames :(",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": {
+							"sceneName": "delfos",
+							"variation": "apolo_triste"
+						}
+					}
+				]
+			}
+		]
+	},
+	"hemera_8": {
+		"character": "hemera",
+		"text": "hahaha isso foi fantástico! que cena perfeita, agora esse pivete vai ficar ocupado se lamentando... ok, vou voltar para casa, já estou ficando com sono. ah, e pode ficar com a lira, eu não uso ela mesmo.",
+		"choices": [
+			{
+				"text": "[tocar lira]",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": { "sceneName": "lira", "variation": "from_story" }
+					},
+					{ "action": "playSound", "actionParams": { "sound": "lira.mp3" } }
+				]
+			},
+			{
+				"text": "[abrir mapa]",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": { "sceneName": "map", "variation": "tainaron" }
+					}
+				]
+			}
+		]
+	},
+	"nix_retorno_1": {
+		"character": "nix",
+		"text": "hemera! finalmente você chegou! esse deve ter sido o dia mais longo de todos os tempos... vá já pro seu quarto!",
+		"choices": [
+			{
+				"text": "...",
+				"next": "nix_retorno_2",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 1,
+							"image": "hemera_brava.png",
+							"animation": ""
+						}
+					},
+					{
+						"action": "playSound",
+						"actionParams": {
+							"sound": "bravo.mp3"
+						}
+					}
+				]
+			}
+		]
+	},
+	"nix_retorno_2": {
+		"character": "hemera",
+		"text": "aff eu nunca posso fazer nada >:(",
+		"choices": [
+			{
+				"text": "...",
+				"next": "nix_retorno_3",
+				"actions": [
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 1,
+							"image": "nada.png",
+							"animation": "fade"
+						}
+					},
+					{
+						"action": "playSound",
+						"actionParams": {
+							"sound": "caminhando.mp3"
+						}
+					}
+				]
+			}
+		]
+	},
+	"nix_retorno_3": {
+		"text": "esses jovens... muito obrigada, finalmente posso levar a noite ao mundo. Ah, Hefesto deixou um presente para você, é tipo um jarro, e pediu para não abrir. até mais!",
+		"choices": [
+			{
+				"text": "valeu... até mais!",
+				"actions": [
+					{
+						"action": "changeScene",
+						"actionParams": { "sceneName": "minigame_pandora", "variation": "" }
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,29 @@
+.character {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-image: none;
+    background-size: cover;
+    top: 60px;
+    transition: background 0.2s linear;
+    z-index: 1;
+}
+
+/* DIALOG SCENES*/
+.window.dialog {
+    inset: auto 30px 30px 30px;
+    position: absolute;
+    min-height: 120px;
+    z-index: 10;
+}
+
+.character:first-child {
+    left: 50px;
+}
+
+.character ~.character {
+    right: 50px;
+}
+#dialog-text {
+    height: 70px;
+}

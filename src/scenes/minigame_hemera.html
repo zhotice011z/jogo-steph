@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+	<script src="/src/js/navigation.js" type="module"></script>
+</head>
+
+<body id="game">
+	<div id="scene" frame="1" style="background-color: var(--blue)">
+		<div id="MGHbox"></div>
+	</div>
+	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/minigame_hemera.css" />
+	<script async type="module">
+		try{
+			const scene = document.getElementById('scene');
+			const box = document.getElementById('MGHbox');
+			async function changeStep(){
+				if (scene.getAttribute('frame')==3) {
+					window.changeScene('delfos', 'hemera_1');
+					return
+				}
+				await window.sceneTransition(true);
+				scene.setAttribute('frame', parseInt(scene.getAttribute('frame')) + 1);
+				await window.sceneTransition(false);
+			}
+			box.addEventListener('click', async ()=>{await changeStep()});
+			await window.audioManager.changeMusic('Surfing - Hit the Spot.mp3')
+
+		} catch(err) {
+			console.log();
+		} finally {
+			sceneTransition(false)
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+#scene {
+    cursor: var(--cursor-crosshair);
+}
+
+#MGHbox {
+    width: 30px;
+    height: 20px;
+    background-color: red;
+    opacity: 0;
+    position: absolute;
+    cursor: var(--cursor-pointer);
+}
+
+#scene[frame="1"] {
+    background-image: url("/src/assets/image/background/delfos1.png");
+}
+
+#scene[frame="1"]>#MGHbox {
+    top: 270px;
+    left: 400px;
+    width: 60px;
+    height: 40px;
+}
+
+#scene[frame="2"] {
+    background-image: url("/src/assets/image/background/delfos2.png");
+}
+
+#scene[frame="2"]>#MGHbox {
+    top: 230px;
+    left: 340px;
+    width: 60px;
+    height: 40px;
+}
+
+#scene[frame="3"] {
+    background-image: url("/src/assets/image/background/delfos3.png");
+}
+
+#scene[frame="3"]>#MGHbox {
+    top: 160px;
+    left: 160px;
+    width: 60px;
+    height: 60px;
+}
+
+#scene[frame="4"] {
+    background-image: url("/src/assets/image/background/delfos4.png");
+}
+
+#scene[frame="4"]>#MGHbox {
+    top: 240px;
+    left: 50px;
+    width: 60px;
+    height: 60px;
+}

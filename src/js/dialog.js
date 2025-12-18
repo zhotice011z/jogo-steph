@@ -36,6 +36,9 @@ const actions = {
         } else {
             charElem.style.backgroundImage = 'none';
         }
+    },
+    changeMusic: ({music, fade}) => {
+        window.audioManager.changeMusic(music, fade);
     }
 };
 

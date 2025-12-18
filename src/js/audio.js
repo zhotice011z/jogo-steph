@@ -23,7 +23,15 @@ class AudioManager {
     }
 
     async changeMusic(music, fadeDuration = 1000) {
-        // Add to queue
+        // Support special value "0" to stop music (no music)
+        if (music === '0') {
+            this.musicQueue.push({ url: null, fadeDuration });
+            console.log(`Stop music requested`);
+            if (!this.isProcessing) await this.processQueue();
+            return;
+        }
+
+        // Add music change to queue
         let url = '/src/assets/audio/music/' + music;
         this.musicQueue.push({ url, fadeDuration });
         console.log(`Music '${music}' added to queue`);
@@ -45,6 +53,24 @@ class AudioManager {
         // Get next item (clear queue to only play latest)
         const nextTrack = this.musicQueue[this.musicQueue.length - 1];
         this.musicQueue = []; // Clear all pending requests
+
+        // If nextTrack.url is null => stop music request
+        if (!nextTrack.url) {
+            if (this.currentMusic) {
+                console.log(`Stopping music: ${this.currentMusic}`);
+                await this.fadeOut(nextTrack.fadeDuration / 2);
+                if (this.source) this.source.disconnect();
+                if (this.audioElement) {
+                    this.audioElement.pause();
+                    this.audioElement.src = '';
+                }
+                this.currentMusic = null;
+            } else {
+                console.log('No music playing to stop');
+            }
+            this.isProcessing = false;
+            return;
+        }
 
         if (this.currentMusic == nextTrack.url) {
             console.log(`${this.currentMusic} already playing`);

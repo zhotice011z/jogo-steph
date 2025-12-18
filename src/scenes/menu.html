@@ -15,19 +15,29 @@
 		<div class="flex-center">
 			<h1>PANDORA AVENTUREIRA</h1>
 			<div class="flex-center stretch">
-				<button class="large-text" onclick="changeScene('dialog', 'nix_start')"><b>Iniciar</b></button>
-				<button class="large-text" disabled><b>?????</b></button>
+				<button class="large-text" id="iniciar">Iniciar</button>
+				<button class="large-text" id="lira" disabled>?????</button>
 			</div>
 		</div>
 	</div>
 	<script async>
-		try{
+		try {
 			const scene = document.getElementById('scene');
-			window.audioManager.changeMusic('Tupperwave - Timeless.mp3', 6000);
-		} catch(err) {
+			const variation = scene.getAttribute('variation');
+			const iniciar = document.getElementById('iniciar');
+			iniciar.addEventListener('click', ()=>{window.changeScene('dialog', 'nix_start')});
+			window.audioManager.changeMusic('Tupperwave - Timeless.mp3', 3000);
+
+			const lira = document.getElementById('lira');
+			if (variation == 'lira') {
+				lira.disabled = false;
+				lira.innerText = "TOCAR LIRA";
+				lira.addEventListener('click', () => changeScene('lira', 'from_menu'));
+			}
+		} catch (err) {
 			console.log('Error loading scene', err);
 		} finally {
-			sceneTransition(false)
+			sceneTransition(false);
 		}
 	</script>
 </body>

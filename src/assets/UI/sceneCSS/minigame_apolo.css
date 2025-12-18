@@ -1,0 +1,80 @@
+#scene {
+    position: relative;
+    background-image: url('/src/assets/image/background/hades.png');
+}
+
+@keyframes textFloat {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	58% {
+		transform: translate(0, -30px) scale(1.03);
+	}
+	
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+.character {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-image: none;
+    background-size: cover;
+}
+
+#apolo {
+    top: 60px;
+    left: 60px;
+    background-image: url('/src/assets/image/characters/apolo_feliz.png');
+}
+.pulando {
+    animation-iteration-count: infinite;
+	animation-duration: 1s;
+	animation-name: textFloat;
+	animation-timing-function: ease-in-out;
+}
+
+#dafne {
+    top: 60px;
+    right: 60px;
+    background-image: url('/src/assets/image/characters/dafne_normal.png');
+}
+
+#minigame {
+    position: absolute;
+    inset: auto 30px 30px 30px;
+}
+
+#notes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: var(--element-spacing);
+}
+
+.note {
+    width: 40px;
+    height: 40px;
+}
+
+.note {
+    position: relative;
+    box-shadow: var(--border-status-field);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-gray);
+}
+.note.miss {
+    background-color: var(--orange);
+}
+.note.score {
+    background-color: var(--green);
+}
+.note.spacer {
+    background-color: unset;
+    box-shadow: unset;
+}

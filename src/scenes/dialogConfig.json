@@ -17,10 +17,28 @@
 		"music":"Surfing - Hit the Spot.mp3",
 		"background":"delfos4.png"
 	},
+	"apolo_3":{
+		"character1":"apolo_normal.png",
+		"character2":"dafne_normal.png",
+		"music":"Surfing - Hit the Spot.mp3",
+		"background":"delfos4.png"
+	},
+	"apolo_fim":{
+		"character1":"apolo_bravo.png",
+		"character2":"dafne_brava.png",
+		"music":"0",
+		"background":"delfos4.png"
+	},
 	"hemera_8":{
 		"character1":"hemera_maldosa.png",
 		"character2":"",
-		"music":"Surfing - Hit the Spot.mp3",
+		"music":"",
 		"background":"delfos4.png"
+	},
+	"nix_retorno_1":{
+		"character1":"nix_brava.png",
+		"character2":"hemera_brava.png",
+		"music":"18 Carat Affair - Jon Benet.mp3",
+		"background":"hades.png"
 	}
 }

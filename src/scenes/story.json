@@ -38,7 +38,7 @@
 					{ "action": "playSound", "actionParams": { "sound": "trovao.mp3" } },
 					{
 						"action": "changeScene",
-						"actionParams": { "sceneName": "fim", "variation": "fim1" }
+						"actionParams": { "sceneName": "fim", "variation": "nix" }
 					}
 				]
 			}
@@ -208,7 +208,7 @@
 		"text": "que coincidência você estar com uma lira jusatemente aqui e agora. acompanhe minha doce voz e não erre uma única nota, ou sofrerá as consequências. Vamos lá, 1... 2... 3...",
 		"choices": [
 			{
-				"text": "[tocar arpa]",
+				"text": "[tocar lira]",
 				"actions": [
 					{
 						"action": "changeScene",
@@ -228,7 +228,7 @@
 				"actions": [
 					{
 						"action": "changeScene",
-						"actionParams": { "sceneName": "fim", "variation": "fim2" }
+						"actionParams": { "sceneName": "fim", "variation": "apolo" }
 					},
 					{ "action": "playSound", "actionParams": { "sound": "burro.mp3" } }
 				]
@@ -261,6 +261,12 @@
 						"actionParams": {
 							"sound": "dafne_arvore.mp3"
 						}
+					},
+					{
+						"action": "changeMusic",
+						"actionParams": {
+							"music": "architecture in tokyo - HUMID AIR.mp3"
+						}
 					}
 				]
 			}
@@ -291,7 +297,7 @@
 			}
 		]
 	},
-	"apolo_6": {
+	"apolo_5": {
 		"character": "apolo",
 		"text": "eu sou tão ruim assim? hm, não é todo mundo que sabe apreciar arte hoje em dia... enfim, agradeço por tentar me ajudar. eu vou... chorar aqui no cantinho por um tempo...",
 		"choices": [
@@ -343,14 +349,6 @@
 				"next": "nix_retorno_2",
 				"actions": [
 					{
-						"action": "changeCharacter",
-						"actionParams": {
-							"character": 1,
-							"image": "hemera_brava.png",
-							"animation": ""
-						}
-					},
-					{
 						"action": "playSound",
 						"actionParams": {
 							"sound": "bravo.mp3"
@@ -372,7 +370,15 @@
 						"action": "changeCharacter",
 						"actionParams": {
 							"character": 1,
-							"image": "nada.png",
+							"image": "",
+							"animation": "fade"
+						}
+					},
+					{
+						"action": "changeCharacter",
+						"actionParams": {
+							"character": 0,
+							"image": "nix_feliz.png",
 							"animation": "fade"
 						}
 					},

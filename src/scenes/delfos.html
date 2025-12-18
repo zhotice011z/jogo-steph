@@ -39,6 +39,12 @@
 				await new Promise(resolve => setTimeout(resolve, 2000));
 				window.changeScene('dialog', 'apolo_1')
 			}
+
+			if (variation == 'apolo_triste') {
+				scene.setAttribute('frame', 4);
+				hemera.addEventListener('click', async () => await window.changeScene('dialog', 'hemera_8'))
+				await sceneTransition(false);
+			}
 		} catch (err) {
 			console.log('Error loading the scene:', err);
 		} finally {

@@ -11,13 +11,18 @@
 </head>
 
 <body id="game">
-	<div id="scene" variation="delfos" class="flex-center" style="background-color: var(--blue)">
-		<div class="window">
-			<div id="map" class="back">
+	<div id="scene" variation="delfos" class="flex-center">
+		<div class="window" id="lira">
+			<div class="title-bar blue">
+				<div class="title-bar-text" id="dialog-title">Mapa da Grécia</div>
+			</div>
+			<div class="window-body">
+				<div id="map" class="back">
 				<div class="water"></div>
 				<div class="overlay"></div>
-				<button id="map_delfos" onclick="changeScene('minigame_hemera')"><b>Delfos</b></button>
-				<button id="map_tainaron" onclick="changeScene('tainaron')"><b>Tainaron</b></button>
+				<button id="map_delfos" class="large-text">Delfos</button>
+				<button id="map_tainaron" class="large-text">Tainaron</button>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -26,13 +31,18 @@
 		try {
 			const scene = document.getElementById('scene');
 			const variation = scene.getAttribute('variation');
+			const delfos = document.getElementById('map_delfos');
+			delfos.addEventListener('click', ()=>changeScene('minigame_hemera'));
+			const tainron = document.getElementById('map_tainaron');
+			tainron.addEventListener('click', ()=>changeScene('dialog', 'nix_retorno_1'));
+
 			if (variation == 'delfos') {
-				document.getElementById('map_delfos').disabled = false;
-				document.getElementById('map_tainaron').disabled = true;
+				delfos.disabled = false;
+				tainron.disabled = true;
 			}
 			if (variation == 'tainaron') {
-				document.getElementById('map_delfos').disabled = true;
-				document.getElementById('map_tainaron').disabled = false;
+				delfos.disabled = true;
+				tainron.disabled = false;
 			}
 
 		} catch (err) {

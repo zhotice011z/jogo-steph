@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+</head>
+
+<body id="game">
+	<div id="scene">
+		<div class="character" id="apolo"></div>
+		<div class="character" id="dafne"></div>
+		<div class="window dialog" id="minigame">
+			<div class="title-bar gray">
+				<div class="title-bar-text" id="dialog-title">ACOMPANHE A MÚSICA (PRESSIONE A TECLA)</div>
+			</div>
+			<div id="notes">
+			</div>
+		</div>
+	</div>
+	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/minigame_apolo.css" />
+	<script async type="module">
+		try {
+			const scene = document.getElementById('scene');
+			const variation = scene.getAttribute('varation');
+			const notesElem = document.querySelector('#notes');
+			const apolo = document.getElementById('apolo');
+			const keys = [
+				{ key: 'Q', note: '5C', label: 'DO' },
+				{ key: 'W', note: '5D', label: 'RE' },
+				{ key: 'E', note: '5E', label: 'MI' },
+				{ key: 'R', note: '5F', label: 'FA' },
+				{ key: 'T', note: '5G', label: 'SOL' },
+				{ key: 'Y', note: '6A', label: 'LA' },
+				{ key: 'U', note: '6B', label: 'SI' },
+
+				{ key: 'A', note: '4C', label: 'DO' },
+				{ key: 'S', note: '4D', label: 'RE' },
+				{ key: 'D', note: '4E', label: 'MI' },
+				{ key: 'F', note: '4F', label: 'FA' },
+				{ key: 'G', note: '4G', label: 'SOL' },
+				{ key: 'H', note: '5A', label: 'LA' },
+				{ key: 'J', note: '5B', label: 'SI' },
+
+				{ key: 'V', note: '3F', label: 'FA' },
+				{ key: 'B', note: '3G', label: 'SOL' },
+				{ key: 'N', note: '4A', label: 'LA' },
+				{ key: 'M', note: '4B', label: 'SI' }
+			];
+
+			const MGAnotes = [
+				['N', 'N', 'M', 'A', 'M', '', 'A', 'A', 'N', 'M', 'N'],
+				['N', 'N', 'M', 'A', 'D', 'M', '', 'A', 'M', 'N', 'M', 'N'],
+			];
+			let currentPhase = 0;
+			let currentNote = 0;
+			let isPhaseLoaded = false;
+
+			function playNote(e) {
+				if (!isPhaseLoaded) { return; }
+				let note = keys.find(item => item.key === e.key.toUpperCase()).note;
+				if (note) {
+					window.audioManager.playSound(`lira/${note}.mp3`);
+				}
+			}
+			window.addEventListener('keydown', playNote);
+
+			async function loadPhase(phase) {
+				isPhaseLoaded = false;
+
+				currentPhase = phase;
+				currentNote = 0;
+				let notesHTML = MGAnotes[currentPhase].map(note => {
+					let key = keys.find(item => item.key === note.toUpperCase());
+					return key ?
+						`<div class="note large-text" key="${key.key}" note="${key.note}">
+						${key.key}
+						</div>`
+						:
+						`<div class="note spacer"></div>`;
+				});
+				for (const child of [...notesElem.children]) {
+					child.parentNode.removeChild(child);
+					await new Promise(resolve => setTimeout(resolve, 100));
+				}
+
+				for (const elem of notesHTML) {
+					notesElem.insertAdjacentHTML('beforeend', elem);
+					await new Promise(resolve => setTimeout(resolve, 100));
+				}
+
+				isPhaseLoaded = true;
+			}
+
+			async function checkPhase() {
+				if (document.querySelector('.miss')) {
+					exit();
+					window.changeScene('dialog', 'apolo_fim');
+				}
+				else if (currentPhase == 0) {
+					apolo.classList.add('pulando');
+					window.audioManager.playSound('minigame_apolo/rabetão1.mp3');
+					await new Promise(resolve => setTimeout(resolve, 4000));
+					apolo.classList.remove('pulando');
+					await loadPhase(1);
+				}
+				else if (currentPhase == 1) {
+					exit();
+					window.audioManager.playSound('minigame_apolo/rabetão2.mp3');
+					apolo.classList.add('pulando');
+					await new Promise(resolve => setTimeout(resolve, 4000));
+					for (const child of [...notesElem.children]) {
+						child.parentNode.removeChild(child);
+						await new Promise(resolve => setTimeout(resolve, 100));
+					}
+					window.audioManager.playSound('minigame_apolo/rabetão3.mp3');
+					document.getElementById('minigame').classList.add('hidden');
+					await new Promise(resolve => setTimeout(resolve, 16000));
+					window.changeScene('dialog', 'apolo_3');
+				}
+			}
+
+			function checkNote(e) {
+				if (!isPhaseLoaded) { return; }
+				let scored = e.key.toUpperCase() == MGAnotes[currentPhase][currentNote];
+				document.querySelectorAll('.note')[currentNote].classList.add(scored ? 'score' : 'miss');
+				if (currentNote + 1 == MGAnotes[currentPhase].length) {
+					checkPhase();
+					return;
+				}
+				currentNote += MGAnotes[currentPhase][currentNote + 1] ? 1 : 2;
+			}
+			window.addEventListener('keydown', checkNote);
+
+
+			await window.audioManager.changeMusic('0', 2000);
+			await sceneTransition(false);
+			await loadPhase(0);
+
+			async function exit() {
+				window.removeEventListener('keydown', playNote);
+				window.removeEventListener('keydown', checkNote);
+			}
+
+		} catch (err) {
+			console.log('Error loading the scene:', err);
+		} finally {
+			sceneTransition(false);
+		}
+	</script>
+</body>
+
+</html>

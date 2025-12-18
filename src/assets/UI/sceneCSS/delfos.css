@@ -21,7 +21,7 @@
     top: 250px;
     left: 70px;
 }
-#scene[frame='1']>#hemera {
+#scene[frame='1']>#hemera, #scene[frame='4']>#hemera {
     cursor: var(--cursor-pointer);
 }
 
@@ -67,6 +67,18 @@
     top: 140px;
     left: 200px;
     transform: scaleX(1);
+}
+
+#scene[frame='4']>#dafne {
+    top: 120px;
+    left: 430px;
+    background-image: url('/src/assets/image/characters/dafne_arvore.png');
+}
+#scene[frame='4']>#apolo {
+    top: 130px;
+    left: 330px;
+    transform: scale(0.7);
+    background-image: url('/src/assets/image/characters/apolo_triste.png');
 }
 
 

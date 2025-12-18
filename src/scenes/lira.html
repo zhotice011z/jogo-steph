@@ -22,62 +22,7 @@
 			<div class="title-bar pink">
 				<div class="title-bar-text" id="dialog-title">Controles</div>
 			</div>
-			<div class="window-body">
-				<button class="note" key="Q" note="5C">
-					<p>Q</p>DO
-				</button>
-				<button class="note" key="W" note="5D">
-					<p>W</p>RE
-				</button>
-				<button class="note" key="E" note="5E">
-					<p>E</p>MI
-				</button>
-				<button class="note" key="R" note="5F">
-					<p>R</p>FA
-				</button>
-				<button class="note" key="T" note="5G">
-					<p>T</p>SOL
-				</button>
-				<button class="note" key="Y" note="6A">
-					<p>Y</p>LA
-				</button>
-				<button class="note" key="U" note="6B">
-					<p>U</p>SI
-				</button>
-				<button class="note" key="A" note="4C">
-					<p>A</p>DO
-				</button>
-				<button class="note" key="S" note="4D">
-					<p>S</p>RE
-				</button>
-				<button class="note" key="D" note="4E">
-					<p>D</p>MI
-				</button>
-				<button class="note" key="F" note="4F">
-					<p>F</p>FA
-				</button>
-				<button class="note" key="G" note="4G">
-					<p>G</p>SOL
-				</button>
-				<button class="note" key="H" note="5A">
-					<p>H</p>LA
-				</button>
-				<button class="note" key="J" note="5B">
-					<p>J</p>SI
-				</button>
-				<button class="note" key="V" note="3F">
-					<p>V</p>FA
-				</button>
-				<button class="note" key="B" note="3G">
-					<p>B</p>SOL
-				</button>
-				<button class="note" key="N" note="4A">
-					<p>N</p>LA
-				</button>
-				<button class="note" key="M" note="4B">
-					<p>M</p>SI
-				</button>
-			</div>
+			<div class="window-body"></div>
 		</div>
 		<button class="large-text" id="voltar">VOLTAR</button>
 	</div>
@@ -87,31 +32,66 @@
 			const scene = document.getElementById('scene');
 			const variation = scene.getAttribute('variation');
 
-			const noteButtons = document.querySelectorAll('.note');
-			noteButtons.forEach(bttn => {
-				bttn.addEventListener('click', () => {
-					window.audioManager.playSound(`lira/${bttn.getAttribute('note')}.mp3`);
-				});
+			const keys = [
+				{ key: 'Q', note: '5C', label: 'DO' },
+				{ key: 'W', note: '5D', label: 'RE' },
+				{ key: 'E', note: '5E', label: 'MI' },
+				{ key: 'R', note: '5F', label: 'FA' },
+				{ key: 'T', note: '5G', label: 'SOL' },
+				{ key: 'Y', note: '6A', label: 'LA' },
+				{ key: 'U', note: '6B', label: 'SI' },
+
+				{ key: 'A', note: '4C', label: 'DO' },
+				{ key: 'S', note: '4D', label: 'RE' },
+				{ key: 'D', note: '4E', label: 'MI' },
+				{ key: 'F', note: '4F', label: 'FA' },
+				{ key: 'G', note: '4G', label: 'SOL' },
+				{ key: 'H', note: '5A', label: 'LA' },
+				{ key: 'J', note: '5B', label: 'SI' },
+
+				{ key: 'V', note: '3F', label: 'FA' },
+				{ key: 'B', note: '3G', label: 'SOL' },
+				{ key: 'N', note: '4A', label: 'LA' },
+				{ key: 'M', note: '4B', label: 'SI'}
+			];
+
+			const keysHTML = keys.map(item => {
+				return `<button class="note" key="${item.key}" note="${item.note}">
+					<p>${item.key}</p>${item.label}
+				</button>`
 			});
-			function noteKeydown(e) {
-				let note = document.querySelector(`button.note[key='${e.key.toUpperCase()}']`);
-				if (note) { note.click(); }
-			}
-			window.addEventListener('keydown', noteKeydown);
+			document.querySelector('#teclado .window-body').innerHTML = keysHTML.join('');
 			
+			function playNote(e){
+				let note = null
+				if (e.type === 'click') {
+					note = e.target.getAttribute('note');
+				} if (e.type === 'keydown') {
+					note = keys.find(item => item.key === e.key.toUpperCase()).note;
+				}
+				if (note) {
+					window.audioManager.playSound(`lira/${note}.mp3`);
+				}
+			}
+
+			document.querySelectorAll('.note').forEach(bttn => {
+				bttn.addEventListener('click', playNote);
+			})
+			window.addEventListener('keydown', playNote);
+
 			await window.audioManager.fadeOut(2000);
 
 			await sceneTransition(false);
 
-			document.getElementById('voltar').addEventListener('click', async()=>{
-				window.removeEventListener('keydown', noteKeydown);
-				if (variation=='from_story'){
+			document.getElementById('voltar').addEventListener('click', async () => {
+				window.removeEventListener('keydown', playNote);
+				if (variation == 'from_story') {
 					await changeScene('dialog', 'hemera_8');
 				} else if (variation == 'from_menu') {
-					await changeScene('menu');
+					await changeScene('menu','lira');
 				}
 				await window.audioManager.fadeIn(2000);
-			})
+			});
 		} catch (err) {
 			console.log('Error loading the scene:', err);
 		} finally {

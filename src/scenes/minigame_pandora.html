@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+</head>
+
+<body id="game">
+	<div id="scene">
+		<div id="pandora"></div>
+		<div id="pata"></div>
+		<div id="vaso"></div>
+		<p id="goal"></p>
+	</div>
+	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/minigame_pandora.css" />
+	<script async type="module">
+		try {
+			const scene = document.getElementById('scene');
+			const variation = scene.getAttribute('varation');
+			const pata = document.getElementById('pata');
+			const scoreText = document.getElementById('goal');
+
+			let minRotation = -30;
+			let maxRotation = 70;
+			let score = 0;
+			let difficulty = 1;
+			let maxScore = maxRotation - minRotation;
+
+			const updateMPG = setInterval(() => {
+				let rotation = -Math.max(minRotation, score + minRotation);
+				scoreText.innerText = `Score: ${score} | Rotation: ${rotation}deg | Difficulty: ${difficulty}`;
+				pata.style.transform = `rotate(${rotation}deg)`;
+			}, 50);
+
+			function reduceScore(e) {
+				if (e.type === 'click' | (e.type === 'keydown' & e.code === 'Space')) {
+					score = Math.max(0, score - 10);
+				}
+			}
+			window.addEventListener('keydown', reduceScore);
+			scene.addEventListener('click', reduceScore);
+
+			const MGP = setInterval(() => {
+				score += difficulty;
+				if (score > maxScore) {
+					clearInterval(MGP);
+					clearInterval(updateMPG);
+					window.removeEventListener('keydown', reduceScore);
+					scene.removeEventListener('click', reduceScore);
+				}
+			}, 50);
+
+			const increaseDifficulty = setInterval(() => {
+				difficulty += 1;
+			}, 4000);
+
+		} catch (err) {
+			console.log('Error loading the scene:', err);
+		} finally {
+			sceneTransition(false);
+		}
+	</script>
+</body>
+
+</html>

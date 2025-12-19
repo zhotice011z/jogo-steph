@@ -33,7 +33,7 @@
 }
 
 #estrelas {
-    background-image: url('/src/assets/image/minigame_pandora/estrelas.gif');
+    background-image: url('/src/assets/image/resista/estrelas.gif');
     opacity: 0;
 
     animation: anoitecer_estrelas 3s linear 6s 1 normal forwards;
@@ -65,7 +65,7 @@
 }
 
 #terra {
-    background-image: url('/src/assets/image/minigame_pandora/terra1.png');
+    background-image: url('/src/assets/image/resista/terra1.png');
     background-position: center bottom;
     bottom: 0px;
     opacity: 1;

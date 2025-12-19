@@ -23,6 +23,11 @@
 		try {
 			const scene = document.getElementById('scene');
 			const variation = scene.getAttribute('varation');
+			
+			sceneTransition(false);
+			await new Promise(resolve => setTimeout(resolve, 13000));
+			window.changeScene('minigame_pandora')
+
 		} catch (err) {
 			console.log('Error loading the scene:', err);
 		} finally {

@@ -1,0 +1,83 @@
+@keyframes anoitecer_scene {
+    0% {
+        background-position-y: 100%;
+    }
+
+    100% {
+        background-position-y: 0%;
+    }
+}
+
+#scene {
+    position: relative;
+    animation: anoitecer_scene 7s linear 1s 1 normal forwards;
+    background: linear-gradient(var(--black), var(--dark-blue), var(--pink), var(--orange), var(--cyan), var(--cyan));
+    background-size: 100% 400%;
+    background-position-y: 100%;
+}
+
+#scene>* {
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes anoitecer_estrelas {
+    0% {
+        opacity: 0%;
+    }    
+    100% {
+        opacity: 1;
+    }
+}
+
+#estrelas {
+    background-image: url('/src/assets/image/minigame_pandora/estrelas.gif');
+    opacity: 0;
+
+    animation: anoitecer_estrelas 3s linear 6s 1 normal forwards;
+
+}
+
+@keyframes anoitecer_sol {
+    0% {
+        background-color: var(--yellow);
+        top: 40%;
+    }
+
+    100% {
+        background-color: var(--pink);
+        top: 100%;
+    }
+}
+
+#sol {
+    width: 170px;
+    height: 170px;
+    background-color: var(--yellow);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+
+    animation: anoitecer_sol 7s linear 0.1s 1 normal forwards;
+}
+
+#terra {
+    background-image: url('/src/assets/image/minigame_pandora/terra1.png');
+    background-position: center bottom;
+    bottom: 0px;
+    opacity: 1;
+}
+
+@keyframes texto {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+#texto {
+    top: 80px;
+    opacity: 0;
+
+    animation: texto 2s linear 10s 1 normal forwards;
+}

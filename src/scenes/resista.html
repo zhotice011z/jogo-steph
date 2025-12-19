@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="flex-center">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/src/assets/UI/98.css/style.css" />
+	<link rel="stylesheet" href="/src/assets/UI/base.css" />
+</head>
+
+<body id="game">
+	<div id="scene" frame="1">
+		<div id="estrelas"></div>
+		<div id="sol"></div>
+		<div id="terra"></div>
+		<div id="texto">
+			<h1> RESISTA A TENTAÇÃO </h1>
+			<h2> Fique apertando ESPAÇO </h2>
+		</div>
+	</div>
+	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/resista.css" />
+	<script async type="module">
+		try {
+			const scene = document.getElementById('scene');
+			const variation = scene.getAttribute('varation');
+		} catch (err) {
+			console.log('Error loading the scene:', err);
+		} finally {
+			sceneTransition(false);
+		}
+	</script>
+</body>
+
+</html>

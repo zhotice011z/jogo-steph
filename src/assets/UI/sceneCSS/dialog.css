@@ -4,7 +4,7 @@
     height: 120px;
     background-image: none;
     background-size: cover;
-    top: 60px;
+    top: 50px;
     transition: background 0.2s linear;
     z-index: 1;
 }

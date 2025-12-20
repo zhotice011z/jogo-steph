@@ -32,9 +32,9 @@
 			const scene = document.getElementById('scene');
 			const variation = scene.getAttribute('variation');
 			const delfos = document.getElementById('map_delfos');
-			delfos.addEventListener('click', ()=>changeScene('minigame_hemera'));
+			delfos.addEventListener('click', async () => await changeScene('minigame_hemera'));
 			const tainron = document.getElementById('map_tainaron');
-			tainron.addEventListener('click', ()=>changeScene('dialog', 'nix_retorno_1'));
+			tainron.addEventListener('click', async () => await changeScene('dialog', 'nix_retorno_1'));
 
 			if (variation == 'delfos') {
 				delfos.disabled = false;
@@ -48,7 +48,7 @@
 		} catch (err) {
 			console.log('Error loading scene:', err);
 		} finally {
-			sceneTransition(false)
+			await sceneTransition(false)
 		}
 	</script>
 

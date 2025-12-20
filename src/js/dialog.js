@@ -26,10 +26,10 @@ function loadDialogConfig() {
 }
 
 const actions = {
-    changeScene: ({ sceneName, variation }) => {
-        changeScene(sceneName, variation);
+    changeScene: async ({ sceneName, variation }) => {
+        await changeScene(sceneName, variation);
     },
-    changeCharacter: ({ character, image, animation = null }) => {
+    changeCharacter: async ({ character, image, animation = null }) => {
         const charElem = document.getElementsByClassName('character')[character];
         if (image) {
             charElem.style.backgroundImage = `url('/src/assets/image/characters/${image}')`;
@@ -37,8 +37,8 @@ const actions = {
             charElem.style.backgroundImage = 'none';
         }
     },
-    changeMusic: ({music, fade}) => {
-        window.audioManager.changeMusic(music, fade);
+    changeMusic: async ({music, fade}) => {
+        await window.audioManager.changeMusic(music, fade);
     }
 };
 

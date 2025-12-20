@@ -24,9 +24,10 @@
 			const scene = document.getElementById('scene');
 			const variation = scene.getAttribute('varation');
 			
-			sceneTransition(false);
+			await window.audioManager.changeMusic('Running In The 90s (VAPOR VHS remix - speed up).mp3')
+			await sceneTransition(false);
 			await new Promise(resolve => setTimeout(resolve, 13000));
-			window.changeScene('minigame_pandora')
+			await window.changeScene('minigame_pandora')
 
 		} catch (err) {
 			console.log('Error loading the scene:', err);

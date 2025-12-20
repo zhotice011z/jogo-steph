@@ -97,7 +97,7 @@
 			async function checkPhase() {
 				if (document.querySelector('.miss')) {
 					exit();
-					window.changeScene('dialog', 'apolo_fim');
+					await window.changeScene('dialog', 'apolo_fim');
 				}
 				else if (currentPhase == 0) {
 					apolo.classList.add('pulando');
@@ -118,16 +118,16 @@
 					window.audioManager.playSound('minigame_apolo/rabetão3.mp3');
 					document.getElementById('minigame').classList.add('hidden');
 					await new Promise(resolve => setTimeout(resolve, 16000));
-					window.changeScene('dialog', 'apolo_3');
+					await window.changeScene('dialog', 'apolo_3');
 				}
 			}
 
-			function checkNote(e) {
+			async function checkNote(e) {
 				if (!isPhaseLoaded) { return; }
 				let scored = e.key.toUpperCase() == MGAnotes[currentPhase][currentNote];
 				document.querySelectorAll('.note')[currentNote].classList.add(scored ? 'score' : 'miss');
 				if (currentNote + 1 == MGAnotes[currentPhase].length) {
-					checkPhase();
+					await checkPhase();
 					return;
 				}
 				currentNote += MGAnotes[currentPhase][currentNote + 1] ? 1 : 2;

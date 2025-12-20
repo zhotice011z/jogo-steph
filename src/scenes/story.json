@@ -252,8 +252,7 @@
 						"action": "changeCharacter",
 						"actionParams": {
 							"character": 1,
-							"image": "dafne_arvore.png",
-							"animation": "fade"
+							"image": "dafne_arvore.png"
 						}
 					},
 					{
@@ -370,16 +369,14 @@
 						"action": "changeCharacter",
 						"actionParams": {
 							"character": 1,
-							"image": "",
-							"animation": "fade"
+							"image": "vazio"
 						}
 					},
 					{
 						"action": "changeCharacter",
 						"actionParams": {
 							"character": 0,
-							"image": "nix_feliz.png",
-							"animation": "fade"
+							"image": "nix_feliz.png"
 						}
 					},
 					{
@@ -400,7 +397,7 @@
 				"actions": [
 					{
 						"action": "changeScene",
-						"actionParams": { "sceneName": "minigame_pandora", "variation": "" }
+						"actionParams": { "sceneName": "resista", "variation": "" }
 					}
 				]
 			}

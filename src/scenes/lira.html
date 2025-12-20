@@ -64,13 +64,17 @@
 			
 			function playNote(e){
 				let note = null
-				if (e.type === 'click') {
-					note = e.target.getAttribute('note');
-				} if (e.type === 'keydown') {
-					note = keys.find(item => item.key === e.key.toUpperCase()).note;
-				}
-				if (note) {
-					window.audioManager.playSound(`lira/${note}.mp3`);
+				try{
+					if (e.type === 'click') {
+						note = e.target.getAttribute('note');
+					} if (e.type === 'keydown') {
+						note = keys.find(item => item.key === e.key.toUpperCase()).note;
+					}
+					if (note) {
+						window.audioManager.playSound(`lira/${note}.mp3`);
+					}
+				} catch(err) {
+					console.log('Note not found');
 				}
 			}
 
@@ -95,7 +99,7 @@
 		} catch (err) {
 			console.log('Error loading the scene:', err);
 		} finally {
-			sceneTransition(false);
+			await sceneTransition(false);
 		}
 	</script>
 </body>

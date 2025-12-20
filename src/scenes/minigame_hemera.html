@@ -20,7 +20,7 @@
 			const box = document.getElementById('MGHbox');
 			async function changeStep(){
 				if (scene.getAttribute('frame')==3) {
-					window.changeScene('delfos', 'hemera_1');
+					await window.changeScene('delfos', 'hemera_1');
 					return
 				}
 				await window.sceneTransition(true);
@@ -31,7 +31,7 @@
 			await window.audioManager.changeMusic('Surfing - Hit the Spot.mp3')
 
 		} catch(err) {
-			console.log();
+			console.log('Error loading the scene:', err);
 		} finally {
 			sceneTransition(false)
 		}

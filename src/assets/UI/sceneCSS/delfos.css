@@ -75,9 +75,9 @@
     background-image: url('/src/assets/image/characters/dafne_arvore.png');
 }
 #scene[frame='4']>#apolo {
-    top: 130px;
+    top: 150px;
     left: 330px;
-    transform: scale(0.7);
+    transform: scale(0.5);
     background-image: url('/src/assets/image/characters/apolo_triste.png');
 }
 

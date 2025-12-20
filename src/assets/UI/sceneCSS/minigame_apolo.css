@@ -1,6 +1,6 @@
 #scene {
     position: relative;
-    background-image: url('/src/assets/image/background/hades.png');
+    background-image: url('/src/assets/image/background/apolo_dafne.png');
 }
 
 @keyframes textFloat {
@@ -19,8 +19,8 @@
 
 .character {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     background-image: none;
     background-size: cover;
 }

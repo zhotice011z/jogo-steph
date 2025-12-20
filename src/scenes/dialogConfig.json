@@ -3,7 +3,7 @@
 		"character1":"nix_normal.png",
 		"character2":"",
 		"music":"18 Carat Affair - Jon Benet.mp3",
-		"background":"hades.png"
+		"background":"tartarus.png"
 	},
 	"hemera_1":{
 		"character1":"hemera_brava.png",
@@ -39,6 +39,6 @@
 		"character1":"nix_brava.png",
 		"character2":"hemera_brava.png",
 		"music":"18 Carat Affair - Jon Benet.mp3",
-		"background":"hades.png"
+		"background":"tartarus.png"
 	}
 }

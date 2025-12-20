@@ -1,4 +1,4 @@
-@keyframes anoitecer_scene {
+@keyframes scene {
     0% {
         background-position-y: 100%;
     }
@@ -10,7 +10,7 @@
 
 #scene {
     position: relative;
-    animation: anoitecer_scene 7s linear 1s 1 normal forwards;
+    animation: scene 7s linear 1s 1 normal forwards;
     background: linear-gradient(var(--black), var(--dark-blue), var(--pink), var(--orange), var(--cyan), var(--cyan));
     background-size: 100% 400%;
     background-position-y: 100%;
@@ -23,10 +23,11 @@
     height: 100%;
 }
 
-@keyframes anoitecer_estrelas {
+@keyframes estrelas {
     0% {
-        opacity: 0%;
-    }    
+        opacity: 0;
+    }
+
     100% {
         opacity: 1;
     }
@@ -36,11 +37,11 @@
     background-image: url('/src/assets/image/resista/estrelas.gif');
     opacity: 0;
 
-    animation: anoitecer_estrelas 3s linear 6s 1 normal forwards;
+    animation: estrelas 3s linear 6s 1 normal forwards;
 
 }
 
-@keyframes anoitecer_sol {
+@keyframes sol {
     0% {
         background-color: var(--yellow);
         top: 40%;
@@ -61,20 +62,37 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
 
-    animation: anoitecer_sol 7s linear 0.1s 1 normal forwards;
+    animation: sol 7s linear 0.1s 1 normal forwards;
+}
+
+@keyframes terra {
+    0% {
+        filter: brightness(1);
+    }
+
+    100% {
+        filter: brightness(0);
+    }
 }
 
 #terra {
     background-image: url('/src/assets/image/resista/terra1.png');
+    filter: brightness(1);
     background-position: center bottom;
     bottom: 0px;
-    opacity: 1;
+    animation: terra 7s linear 0.1s 1 normal forwards;
 }
 
 @keyframes texto {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 #texto {
     top: 80px;
     opacity: 0;

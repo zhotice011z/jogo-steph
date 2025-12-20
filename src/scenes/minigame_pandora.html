@@ -13,7 +13,7 @@
 		<div id="pandora"></div>
 		<div id="pata"></div>
 		<div id="vaso"></div>
-		<p id="goal"></p>
+		<p id="goal" class="hidden"></p>
 	</div>
 	<link rel="stylesheet" href="/src/assets/UI/sceneCSS/minigame_pandora.css" />
 	<script async type="module">
@@ -43,18 +43,20 @@
 			window.addEventListener('keydown', reduceScore);
 			scene.addEventListener('click', reduceScore);
 
-			const MGP = setInterval(() => {
+			const MGP = setInterval(async() => {
 				score += difficulty;
 				if (score > maxScore) {
 					clearInterval(MGP);
 					clearInterval(updateMPG);
 					window.removeEventListener('keydown', reduceScore);
 					scene.removeEventListener('click', reduceScore);
+					await window.changeScene('fim','pandora');
+					// await new Promise(resolve => setTimeout(resolve, 1000));
 				}
 			}, 50);
 
 			const increaseDifficulty = setInterval(() => {
-				difficulty += 1;
+				difficulty += 0.8;
 			}, 4000);
 
 		} catch (err) {

@@ -1,0 +1,10 @@
+#scene{
+    background-image: url('/src/assets/image/background/pandora_cena.png');
+    background-size: cover;
+    background-position: bottom left;
+}
+#scene>div{
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+}

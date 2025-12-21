@@ -155,11 +155,11 @@ class AudioManager {
      * Play a short sound effect without interrupting music.
      * Returns a handle with a stop() method.
      */
-    async playSound(sound, { volume = 1, loop = false, basePath = '/src/assets/audio/sfx/' } = {}) {
+    async playSound(sound, { volume = 1, loop = false } = {}) {
         if (!this.audioContext) this.init();
 
         // Resolve relative sound path to full URL if necessary
-        let url = '/src/assets/audio/' + sound;
+        let url = '/src/assets/audio/sfx/' + sound;
 
         const buffer = await this.loadSound(url);
 

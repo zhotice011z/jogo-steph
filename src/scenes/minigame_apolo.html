@@ -119,6 +119,7 @@
 					document.getElementById('minigame').classList.add('hidden');
 					await new Promise(resolve => setTimeout(resolve, 16000));
 					await window.changeScene('dialog', 'apolo_3');
+					window.progressTracker.updateProgress('apolo');
 				}
 			}
 

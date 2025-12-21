@@ -21,18 +21,22 @@
 			const fim_bt = document.getElementById('fim_bt');
 			if(variation != 'pandora') await window.audioManager.changeMusic('BALENTS - Yes (I Will).mp3');
 
+			window.progressTracker.updateEndings(variation);
 			switch (variation) {
 				case 'nix':
+					scene.style.backgroundColor = "var(--dark-blue)";
 					fim_title.innerText = "FIM 1: VIROU UM CAVALO!";
 					fim_bt.innerText = "TENTE NOVAMENTE";
 					fim_bt.addEventListener('click', async () => await changeScene('dialog', 'nix_start'));
 					break;
 				case 'apolo':
+					scene.style.backgroundColor = "var(--orange)";
 					fim_title.innerText = "FIM 2: ORELHAS DE BURRO!";
 					fim_bt.innerText = "TENTE NOVAMENTE";
 					fim_bt.addEventListener('click', async () => await changeScene('dialog', 'apolo_1'));
 					break;
 				case 'pandora':
+					scene.style.backgroundImage = "url(/src/assets/image/background/hades.png)";
 					fim_title.innerText = "FIM 3: A CURIOSIDADE MATOU O GATO!";
 					fim_bt.innerText = "VOLTAR AO MENU";
 					fim_bt.addEventListener('click', async () => await changeScene('menu', 'lira'));

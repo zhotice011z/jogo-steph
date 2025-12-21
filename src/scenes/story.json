@@ -74,6 +74,12 @@
 					{
 						"action": "changeScene",
 						"actionParams": { "sceneName": "map", "variation": "delfos" }
+					},
+					{
+						"action": "updateProgress",
+						"actionParams": {
+							"point": "nix"
+						}
 					}
 				]
 			}
@@ -193,6 +199,12 @@
 							"sceneName": "delfos",
 							"variation": "apolo_chega"
 						}
+					},
+					{
+						"action": "updateProgress",
+						"actionParams": {
+							"point": "hemera"
+						}
 					}
 				]
 			}
@@ -258,7 +270,7 @@
 					{
 						"action": "playSound",
 						"actionParams": {
-							"sound": "dafne_arvore.mp3"
+							"sound": "sumindo.mp3"
 						}
 					},
 					{
@@ -285,12 +297,6 @@
 							"character": 0,
 							"image": "apolo_triste.png"
 						}
-					},
-					{
-						"action": "playSound",
-						"actionParams": {
-							"sound": "triste.mp3"
-						}
 					}
 				]
 			}
@@ -308,6 +314,12 @@
 						"actionParams": {
 							"sceneName": "delfos",
 							"variation": "apolo_triste"
+						}
+					},
+					{
+						"action": "updateProgress",
+						"actionParams": {
+							"point": "dafne"
 						}
 					}
 				]
@@ -382,7 +394,7 @@
 					{
 						"action": "playSound",
 						"actionParams": {
-							"sound": "caminhando.mp3"
+							"sound": "sumindo.mp3"
 						}
 					}
 				]
@@ -398,6 +410,12 @@
 					{
 						"action": "changeScene",
 						"actionParams": { "sceneName": "resista", "variation": "" }
+					},
+					{
+						"action": "updateProgress",
+						"actionParams": {
+							"point": "retorno"
+						}
 					}
 				]
 			}

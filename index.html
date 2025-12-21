@@ -9,18 +9,6 @@
 </head>
 
 <body id="main-body">
-
-	<div id="testing" style="position: fixed; bottom: 10px; right: 10px; color: white; z-index: 1000;">
-		<button id="test">Audio</button>
-		<button id="test">Audio</button>
-
-		<select id="scenes" onchange="changeScene(this.value)">
-			<option value="error">Error</option>
-			<option value="menu" selected>menu</option>
-			<option value="dialog">dialog</option>
-		</select>
-
-	</div>
 	<button id="startGame" class="large-text">CARREGAR JOGO</button>
 	<div class="window main hidden">
 		<div class="title-bar">
@@ -31,9 +19,9 @@
 			<div id="game" scene="" variation=""></div>
 		</div>
 		<div class="status-bar">
-			<p class="status-bar-field">Progresso da história: 10%</p>
-			<p class="status-bar-field">Finais descobertos: 1/3</p>
-			<button id="configButton">Configurações</button>
+			<p class="status-bar-field" id="progress"></p>
+			<p class="status-bar-field" id="endings"></p>
+			<!-- <button id="configButton">Configurações</button> -->
 		</div>
 	</div>
 	<script src="/src/js/navigation.js" type="module"></script>

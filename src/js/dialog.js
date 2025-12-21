@@ -29,7 +29,7 @@ const actions = {
     changeScene: async ({ sceneName, variation }) => {
         await changeScene(sceneName, variation);
     },
-    changeCharacter: async ({ character, image, animation = null }) => {
+    changeCharacter: async ({ character, image }) => {
         const charElem = document.getElementsByClassName('character')[character];
         if (image) {
             charElem.style.backgroundImage = `url('/src/assets/image/characters/${image}')`;
@@ -39,6 +39,12 @@ const actions = {
     },
     changeMusic: async ({music, fade}) => {
         await window.audioManager.changeMusic(music, fade);
+    },
+    playSound: ({sound}) => {
+        window.audioManager.playSound(sound);
+    },
+    updateProgress: ({point}) => {
+        window.progressTracker.updateProgress(point);
     }
 };
 

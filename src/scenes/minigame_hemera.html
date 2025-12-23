@@ -20,6 +20,7 @@
 			const box = document.getElementById('MGHbox');
 			async function changeStep(){
 				if (scene.getAttribute('frame')==3) {
+					window.progressTracker.updateProgress('delfos');
 					await window.changeScene('delfos', 'hemera_1');
 					return
 				}

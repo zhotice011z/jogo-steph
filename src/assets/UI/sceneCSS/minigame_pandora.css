@@ -31,7 +31,7 @@
     background-image: url('/src/assets/image/minigame_pandora/vaso.png');
     background-size: cover;
     top: 160px;
-    left: 360px;
+    left: 350px;
 }
 @keyframes texto {
     0% {transform: scale(1);}

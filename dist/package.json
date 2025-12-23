@@ -1,0 +1,24 @@
+{
+  "name": "pandora-aventureira",
+  "version": "1.0.0",
+  "description": "Pandora Aventureira",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "bin": {
+    "game": "./server.js"
+  },
+  "pkg": {
+    "assets": [],
+    "targets": [
+      "node18-win-x64",
+      "node18-macos-x64",
+      "node18-linux-x64"
+    ],
+    "outputPath": "dist"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  }
+}

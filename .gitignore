@@ -1,1 +1,4 @@
 raw/
+dist/src/
+dist/node_modules
+dist/files/
